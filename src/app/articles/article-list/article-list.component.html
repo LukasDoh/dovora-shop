@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-3 w-75 mx-auto">
+  <div class="col mb-4" *ngFor="let article of articles">
+    <div class="card">
+      <a href="#">
+        <img
+          [src]="article.imagePath"
+          [alt]="article.name"
+          class="card-img-top rounded img-fluid">
+        <div class="card-body">
+          <h5 class="card-title">{{ article.name }}</h5>
+          <p class="card-text">{{ article.price }}€</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
