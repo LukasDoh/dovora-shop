@@ -1,13 +1,15 @@
 export class Article {
+  public id: number;
   public name: string;
-  public imagePath: string;
-  public description: string;
+  public imgName: string;
+  public category: string;
   public price: number;
 
-  constructor(name: string, imgPath: string, desc: string, price: number) {
+  constructor(id: number, name: string, imgName: string, price: number, category: string) {
+    this.id = id;
     this.name = name;
-    this.imagePath = imgPath;
-    this.description = desc;
+    this.imgName = imgName;
     this.price = price;
+    this.category = category;
   }
 }
