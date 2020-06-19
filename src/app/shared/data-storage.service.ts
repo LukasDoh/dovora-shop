@@ -21,7 +21,6 @@ export class DataStorageService {
     )
     .pipe(
       tap((articles) => {
-        console.log('lol' + articles);
         this.articleService.setArticles(articles);
       })
     )

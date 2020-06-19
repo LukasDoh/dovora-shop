@@ -23,6 +23,5 @@ export class ArticleListComponent implements OnInit {
       }
     );
     this.articles = this.articleService.getArticles();
-    console.log(this.articles)
   }
 }
