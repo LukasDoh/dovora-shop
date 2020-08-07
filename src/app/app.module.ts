@@ -8,6 +8,7 @@ import { ArticleListComponent } from './articles/article-list/article-list.compo
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
