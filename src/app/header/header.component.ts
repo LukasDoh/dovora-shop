@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faSave }from '@fortawesome/free-regular-svg-icons'
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Article } from '../articles/article.model'
 
 @Component({
   selector: 'app-header',
@@ -8,9 +11,17 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 })
 export class HeaderComponent implements OnInit {
   faPlus = faPlus;
+  faTimes = faTimes;
+  faSave = faSave;
+  article = Article;
   isMenuCollapsed = true;
+  closeResult = '';
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
+
+  open(content) {
+    this.modalService.open(content)
+  }
 
   ngOnInit(): void {
   }
