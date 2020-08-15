@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs/operators';
 
 import { Article } from '../articles/article.model';
 import { ArticleService } from '../articles/article.service';
+import { ArticlesComponent } from '../articles/articles.component';
 
 const url = 'http://localhost:8080/articles';
 
@@ -24,6 +25,15 @@ export class DataStorageService {
         this.articleService.setArticles(articles);
       })
     )
+  }
+
+  saveNewestArticle() {
+    const articles = this.articleService.getArticles();
+    const newArticle = articles[articles.length - 1];
+    console.log(newArticle);
+    return this.http.post(url, newArticle).subscribe(response => {
+      console.log(response);
+    });
   }
 
 }

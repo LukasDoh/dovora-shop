@@ -1,30 +1,55 @@
-<div class=mb-5>
+<div class="mb-5">
   <div class="modal-header">
     <h4 class="modal-title" id="create-artilce">Artikel anlegen</h4>
   </div>
   <div class="modal-body">
-    <form>
+    <form (ngSubmit)="onSaveArticle(f, false)" #f="ngForm">
       <div class="form-row">
         <div class="form-group col-md-2">
           <label for="inputArticleNo">Artikelnr.</label>
-          <input type="text" class="form-control" id="inputArticleNo" />
+          <input
+            type="text"
+            class="form-control"
+            id="inputArticleNo"
+            name="id"
+            ngModel
+            disabled
+          />
         </div>
         <div class="form-group col-md-10">
           <label for="inputArticleName">Bezeichnung</label>
-          <input type="text" class="form-control" id="inputArticleName" />
+          <input
+            type="text"
+            class="form-control"
+            id="inputArticleName"
+            name="name"
+            ngModel
+          />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group col-md-2">
           <label for="inputArticlePrice">Preis</label>
-          <input type="text" class="form-control" id="inputArticlePrice" />
+          <input
+            type="text"
+            class="form-control"
+            id="inputArticlePrice"
+            name="price"
+            ngModel
+          />
         </div>
         <div class="form-group col-md-10">
           <label for="inputArticleCategory">Kategorie</label>
-          <input type="text" class="form-control" id="inputArticleCategory" />
+          <input
+            type="text"
+            class="form-control"
+            id="inputArticleCategory"
+            name="category"
+            ngModel
+          />
         </div>
       </div>
-      <div class="form-row">
+      <!-- <div class="form-row">
         <div class="form-group col-md-12">
           <div class="custom-file">
             <input
@@ -37,7 +62,7 @@
             >
           </div>
         </div>
-      </div>
+      </div> -->
       <button
         type="submit"
         class="btn btn-secondary float-right"

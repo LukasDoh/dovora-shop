@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { Article } from './article.model';
 import { Subject } from 'rxjs';
-import { DataStorageService } from '../shared/data-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +16,6 @@ export class ArticleService {
   setArticles(articles: Article[]) {
     this.articles = articles;
     this.articlesChanged.next(this.articles.slice());
-    console.log(this.articles)
   }
 
   getArticles() {
@@ -26,5 +24,10 @@ export class ArticleService {
 
   getArticle(id: number) {
     return this.articles.find(x => x.id == id);
+  }
+
+  addArticle(article: Article) {
+    this.articles.push(article);
+    this.articlesChanged.next(this.articles.slice());
   }
 }

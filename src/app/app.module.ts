@@ -13,6 +13,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AddArticleComponent } from './articles/add-article/add-article.component';
 import { ArticleModalContainer } from './articles/article-modal-container.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -41,6 +42,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,
