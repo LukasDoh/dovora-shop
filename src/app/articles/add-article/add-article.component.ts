@@ -13,6 +13,12 @@ import { Router } from '@angular/router';
 })
 export class AddArticleComponent {
   faSave = faSave;
+  categories: String[] = [
+    "Hose",
+    "Hemd",
+    "Pullover",
+    
+  ]
 
   constructor(
     private articleService: ArticleService,
