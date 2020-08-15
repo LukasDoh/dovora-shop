@@ -1,9 +1,17 @@
 <div class="mb-5">
   <div class="modal-header">
     <h4 class="modal-title" id="create-artilce">Artikel anlegen</h4>
+    <button
+      type="button"
+      class="btn close"
+      aria-label="Close"
+      (click)="onCloseModals()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="modal-body">
-    <form (ngSubmit)="onSaveArticle(f, false)" #f="ngForm">
+    <form #f="ngForm">
       <div class="form-row">
         <div class="form-group col-md-2">
           <label for="inputArticleNo">Artikelnr.</label>
@@ -12,7 +20,7 @@
             class="form-control"
             id="inputArticleNo"
             name="id"
-            ngModel
+            [value]="nextArticleId"
             disabled
           />
         </div>
@@ -42,14 +50,20 @@
         </div>
         <div class="form-group col-md-10">
           <label for="inputArticleCategory">Kategorie</label>
-          <input
+          <select
             type="text"
             class="form-control"
             id="inputArticleCategory"
             name="category"
             ngModel
             required
-          />
+          >
+            <option
+              *ngFor="let category of categories"
+              value="{{ category.name }}"
+              >{{ category.name }}</option
+            >
+          </select>
         </div>
       </div>
       <!-- <div class="form-row">
@@ -66,13 +80,24 @@
           </div>
         </div>
       </div> -->
-      <button
-        type="submit"
-        class="btn btn-secondary float-right"
-        style="background-color: #364f6b !important;"
-      >
-        <fa-icon [icon]="faSave"></fa-icon> Speichern
-      </button>
+      <div class="btn-group float-right">
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #47668a !important;"
+          (click)="onSaveArticle(f, true)"
+        >
+          <fa-icon [icon]="faPlus"></fa-icon> Weiteren hinzufügen
+        </button>
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #364f6b !important;"
+          (click)="onSaveArticle(f, false)"
+        >
+          <fa-icon [icon]="faSave"></fa-icon> Speichern
+        </button>
+      </div>
     </form>
   </div>
 </div>

@@ -30,16 +30,20 @@ export class ArticleService {
     return this.articles.slice();
   }
 
+  getLastArticle() {
+    return this.articles[this.articles.length - 1];
+  }
+
   getCategories() {
     return this.categories.slice();
   }
 
   getArticle(id: number) {
-    return this.articles.find(x => x.id == id);
+    return this.articles.find((x) => x.id == id);
   }
 
   getCategory(id: number) {
-    return this.categories.find(x => x.id == id);
+    return this.categories.find((x) => x.id == id);
   }
 
   addArticle(article: Article) {
