@@ -1,14 +1,12 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faSave, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { Article } from '../article.model';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ArticleService } from '../article.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { Router } from '@angular/router';
 import { ArticleCategory } from '../article-category.model';
 import { Subscription } from 'rxjs';
-import { ArticleModalContainer } from '../article-modal-container.component';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-article',
@@ -19,15 +17,16 @@ export class AddArticleComponent implements OnInit {
   subscription: Subscription;
   categories: ArticleCategory[] = [];
   nextArticleId: number = 0;
+  addForm: FormGroup;
+  selectedFile: File = null;
   faSave = faSave;
   faPlus = faPlusSquare;
 
   constructor(
     private modalService: NgbModal,
-    private activeModals: NgbActiveModal,
     private articleService: ArticleService,
     private dataStorageService: DataStorageService,
-    private router: Router
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -37,11 +36,23 @@ export class AddArticleComponent implements OnInit {
       }
     );
     this.categories = this.articleService.getCategories();
-    this.nextArticleId = this.articleService.getLastArticle().id + 1
+    this.nextArticleId = this.articleService.getLastArticle().id + 1;
+    this.addForm = this.formBuilder.group({
+      id: [{ value: this.nextArticleId, disabled: true }],
+      name: ['', Validators.required],
+      price: ['', Validators.required],
+      category: ['', Validators.required],
+      image: [''],
+    });
   }
 
-  onSaveArticle(form: NgForm, addMultiple: Boolean) {
-    const value = form.value;
+  // Called when file is changed
+  public onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  onSaveArticle(addMultiple: Boolean) {
+    const value = this.addForm.getRawValue();
     const newArticle = new Article(
       value.id,
       value.name,
@@ -51,12 +62,11 @@ export class AddArticleComponent implements OnInit {
     );
     this.articleService.addArticle(newArticle);
     this.dataStorageService.saveNewestArticle();
-    form.reset();
-    console.log(addMultiple);
+    this.addForm.reset();
     if (addMultiple === false) {
       this.modalService.dismissAll();
     }
-    this.nextArticleId += 1
+    this.nextArticleId += 1;
   }
 
   onCloseModals() {

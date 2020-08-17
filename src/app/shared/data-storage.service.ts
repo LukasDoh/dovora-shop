@@ -14,6 +14,10 @@ const url = 'http://localhost:8080/';
   providedIn: 'root',
 })
 export class DataStorageService {
+  retrieveResponse: any;
+  base64Data: any;
+  retrievedImage: any;
+
   constructor(
     private http: HttpClient,
     private articleService: ArticleService
@@ -25,6 +29,21 @@ export class DataStorageService {
         this.articleService.setArticles(articles);
       })
     );
+  }
+
+  updateArticle(article: Article) {
+    const id: number = article.id;
+    return this.http
+      .put(url + 'articles/' + id, article)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  deleteArticle(id: number) {
+    return this.http.delete(url + 'articles/' + id).subscribe((response) => {
+      console.log(response);
+    });
   }
 
   fetchCategories() {

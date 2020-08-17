@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPen } from '@fortawesome/free-solid-svg-icons'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Article } from '../articles/article.model'
 
@@ -10,6 +10,7 @@ import { Article } from '../articles/article.model'
 })
 export class HeaderComponent implements OnInit {
   faPlus = faPlus;
+  faPen = faPen;
   article = Article;
   isMenuCollapsed = true;
   closeResult = '';

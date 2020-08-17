@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AddArticleComponent } from './add-article/add-article.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 
 @Component({
   selector: 'article-modal-container',
@@ -21,9 +22,11 @@ export class ArticleModalContainer implements OnDestroy {
   ) {
     route.params.pipe(takeUntil(this.destroy)).subscribe((params) => {
       // When the router navigates to this component it takes the params and opens up the add Article Modal
-      console.log(params);
       if (params.operation === 'add') {
         this.currentDialog = this.modalService.open(AddArticleComponent);
+      } else if (params.operation === 'edit') {
+        this.currentDialog = this.modalService.open(EditArticleComponent);
+        this.currentDialog.componentInstance.id = +params.id;
       } else if (params.operation === 'close') {
         router.navigateByUrl('/');
       } else {

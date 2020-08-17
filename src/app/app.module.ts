@@ -13,7 +13,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AddArticleComponent } from './articles/add-article/add-article.component';
 import { ArticleModalContainer } from './articles/article-modal-container.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditArticleComponent } from './articles/edit-article/edit-article.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,11 @@ const routes: Routes = [
       },
       {
         path: ':operation', // Route for adding articles
-        component: ArticleModalContainer
+        component: ArticleModalContainer,
+      },
+      {
+        path: ':operation/:id', // Route for editing articles
+        component: ArticleModalContainer,
       },
     ],
   },
@@ -39,10 +44,12 @@ const routes: Routes = [
     HeaderComponent,
     SidebarComponent,
     AddArticleComponent,
+    EditArticleComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     FontAwesomeModule,

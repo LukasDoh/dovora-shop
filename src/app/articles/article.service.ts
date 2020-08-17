@@ -42,6 +42,10 @@ export class ArticleService {
     return this.articles.find((x) => x.id == id);
   }
 
+  updateArticle(article: Article) {
+    
+  }
+
   getCategory(id: number) {
     return this.categories.find((x) => x.id == id);
   }

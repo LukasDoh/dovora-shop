@@ -1,6 +1,6 @@
 <div class="mb-5">
   <div class="modal-header">
-    <h4 class="modal-title" id="create-artilce">Artikel anlegen</h4>
+    <h4 class="modal-title" id="create-artilce">Artikel ändern</h4>
     <button
       type="button"
       class="btn close"
@@ -11,7 +11,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="addForm">
+    <form [formGroup]="editForm">
       <div class="form-row">
         <div class="form-group col-md-2">
           <label for="inputArticleNo">Artikelnr.</label>
@@ -29,6 +29,7 @@
             class="form-control"
             id="inputArticleName"
             formControlName="name"
+            required
           />
         </div>
       </div>
@@ -40,6 +41,7 @@
             class="form-control"
             id="inputArticlePrice"
             formControlName="price"
+            required
           />
         </div>
         <div class="form-group col-md-10">
@@ -49,10 +51,11 @@
             class="form-control"
             id="inputArticleCategory"
             formControlName="category"
+            required
           >
             <option
               *ngFor="let category of categories"
-              [ngValue]="category.name"
+              value="{{ category.name }}"
               >{{ category.name }}</option
             >
           </select>
@@ -60,33 +63,28 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
-          <div class="custom-file">
             <input
-              type="file"
+              type="text"
+              class="form-control"
               id="inputArticleImage"
-              formControlName="image"
-              (change)="onFileChanged($event)"
+              formControlName="imgName"
             />
-            <label class="custom-file-label" for="inputArticleImage"
-              >Bild auswählen</label
-            >
-          </div>
+            <img src="../../../assets/img/{{article.imgName}}" alt="" height="90px" width="90px">
         </div>
       </div>
       <div class="btn-group float-right">
         <button
           type="submit"
-          class="btn btn-secondary"
-          style="background-color: #47668a !important;"
-          (click)="onSaveArticle(true)"
+          class="btn btn-secondary btn-danger"
+          (click)="onDeleteArticle()"
         >
-          <fa-icon [icon]="faPlus"></fa-icon> Weiteren hinzufügen
+          <fa-icon [icon]="faTrash"></fa-icon> Löschen
         </button>
         <button
           type="submit"
           class="btn btn-secondary"
           style="background-color: #364f6b !important;"
-          (click)="onSaveArticle(false)"
+          (click)="onUpdateArticle()"
         >
           <fa-icon [icon]="faSave"></fa-icon> Speichern
         </button>
