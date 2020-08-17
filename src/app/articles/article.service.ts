@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ComponentFactoryResolver } from '@angular/core';
 
 import { Article } from './article.model';
 import { Subject } from 'rxjs';
@@ -42,10 +42,6 @@ export class ArticleService {
     return this.articles.find((x) => x.id == id);
   }
 
-  updateArticle(article: Article) {
-    
-  }
-
   getCategory(id: number) {
     return this.categories.find((x) => x.id == id);
   }
@@ -53,6 +49,24 @@ export class ArticleService {
   addArticle(article: Article) {
     this.articles.push(article);
     this.articlesChanged.next(this.articles.slice());
+  }
+
+  updateArticle(article: Article) {
+    const callback = (element) => element.id === article.id;
+    const index: number = this.articles.findIndex(callback);
+    if (index !== -1) {
+      this.articles[index] = article
+      this.articlesChanged.next(this.articles.slice());
+    }
+  }
+
+  removeArticle(article: Article) {
+    const callback = (element) => element.id === article.id;
+    const index: number = this.articles.findIndex(callback);
+    if (index !== -1) {
+      this.articles.splice(index, 1);
+      this.articlesChanged.next(this.articles.slice());
+    }
   }
 
   addCategory(category: ArticleCategory) {

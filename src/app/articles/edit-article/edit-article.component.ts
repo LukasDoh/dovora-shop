@@ -6,7 +6,7 @@ import { ArticleService } from '../article.service';
 import { faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Article } from '../article.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class EditArticleComponent implements OnInit {
     private modalService: NgbModal,
     private articleService: ArticleService,
     private dataService: DataStorageService,
-    private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder
   ) {}
 
@@ -52,13 +52,17 @@ export class EditArticleComponent implements OnInit {
   }
 
   onDeleteArticle() {
+    this.articleService.removeArticle(this.editForm.getRawValue())
     this.dataService.deleteArticle(this.editForm.getRawValue().id)
     this.modalService.dismissAll();
+    this.router.navigateByUrl('/')
   }
 
   onUpdateArticle() {
+    this.articleService.updateArticle(this.editForm.getRawValue());
     this.dataService.updateArticle(this.editForm.getRawValue());
     this.modalService.dismissAll();
+    this.router.navigateByUrl('/')
   }
 
   // Called when file is changed

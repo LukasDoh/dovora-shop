@@ -7,6 +7,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { ArticleCategory } from '../article-category.model';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-article',
@@ -26,7 +27,8 @@ export class AddArticleComponent implements OnInit {
     private modalService: NgbModal,
     private articleService: ArticleService,
     private dataStorageService: DataStorageService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -65,11 +67,13 @@ export class AddArticleComponent implements OnInit {
     this.addForm.reset();
     if (addMultiple === false) {
       this.modalService.dismissAll();
+      this.router.navigateByUrl('/')
     }
     this.nextArticleId += 1;
   }
 
   onCloseModals() {
     this.modalService.dismissAll();
+    this.router.navigateByUrl('/')
   }
 }
