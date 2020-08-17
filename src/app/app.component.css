@@ -3,3 +3,11 @@
   width: 100%;
   align-items: stretch;
 }
+
+#mainContainer {
+  padding: 0;
+}
+
+.row-padding {
+  padding-top: 78px;
+}

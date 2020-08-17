@@ -8,21 +8,54 @@ import { ArticleListComponent } from './articles/article-list/article-list.compo
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Routes, RouterModule } from '@angular/router';
 
+import { AddArticleComponent } from './articles/add-article/add-article.component';
+import { ArticleModalContainer } from './articles/article-modal-container.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditArticleComponent } from './articles/edit-article/edit-article.component';
+
+const routes: Routes = [
+  {
+    path: 'articles',
+    children: [
+      {
+        path: '',
+        component: ArticlesComponent
+      },
+      {
+        path: ':operation', // Route for adding articles
+        component: ArticleModalContainer,
+      },
+      {
+        path: ':operation/:id', // Route for editing articles
+        component: ArticleModalContainer,
+      },
+    ],
+  },
+  {path: '**', redirectTo: ''}
+];
 @NgModule({
   declarations: [
     AppComponent,
     ArticlesComponent,
     ArticleListComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    AddArticleComponent,
+    EditArticleComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

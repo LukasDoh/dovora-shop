@@ -1,0 +1,96 @@
+<div class="mb-5">
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-artilce">Artikel anlegen</h4>
+    <button
+      type="button"
+      class="btn close"
+      aria-label="Close"
+      (click)="onCloseModals()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addForm">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputArticleNo">Artikelnr.</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputArticleNo"
+            formControlName="id"
+          />
+        </div>
+        <div class="form-group col-md-10">
+          <label for="inputArticleName">Bezeichnung</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputArticleName"
+            formControlName="name"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputArticlePrice">Preis</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputArticlePrice"
+            formControlName="price"
+          />
+        </div>
+        <div class="form-group col-md-10">
+          <label for="inputArticleCategory">Kategorie</label>
+          <select
+            type="text"
+            class="form-control"
+            id="inputArticleCategory"
+            formControlName="category"
+          >
+            <option
+              *ngFor="let category of categories"
+              [ngValue]="category.name"
+              >{{ category.name }}</option
+            >
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <div class="custom-file">
+            <input
+              type="file"
+              id="inputArticleImage"
+              formControlName="image"
+              (change)="onFileChanged($event)"
+            />
+            <label class="custom-file-label" for="inputArticleImage"
+              >Bild auswählen</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="btn-group float-right">
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #47668a !important;"
+          (click)="onSaveArticle(true)"
+        >
+          <fa-icon [icon]="faPlus"></fa-icon> Weiteren hinzufügen
+        </button>
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #364f6b !important;"
+          (click)="onSaveArticle(false)"
+        >
+          <fa-icon [icon]="faSave"></fa-icon> Speichern
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

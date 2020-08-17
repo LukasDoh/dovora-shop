@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { faPlus, faPen } from '@fortawesome/free-solid-svg-icons'
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Article } from '../articles/article.model'
 
 @Component({
   selector: 'app-header',
@@ -6,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  faPlus = faPlus;
+  faPen = faPen;
+  article = Article;
   isMenuCollapsed = true;
+  closeResult = '';
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
+
+  open(content) {
+    this.modalService.open(content)
+  }
 
   ngOnInit(): void {
   }

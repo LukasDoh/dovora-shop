@@ -1,4 +1,4 @@
-<div class="row row-cols-1 row-cols-md-3 mx-auto">
+<div class="row row-cols-1 row-cols-md-3 mx-auto mt-3">
   <div class="col mb-4" *ngFor="let article of articles">
     <div class="card">
       <a href="#">
@@ -9,7 +9,12 @@
         />
         <div class="card-body">
           <h5 class="card-title">{{ article.name }}</h5>
-          <p class="card-text">{{ article.price }}€</p>
+          <form class="form-inline">
+            <p class="card-text">{{ article.price }}€</p>
+            <a class="btn" routerLink="/articles/edit/{{ article.id }}">
+              <fa-icon [icon]="faPen"></fa-icon>
+            </a>
+          </form>
         </div>
       </a>
     </div>
