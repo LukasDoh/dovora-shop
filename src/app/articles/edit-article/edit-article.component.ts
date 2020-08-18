@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ArticleCategory } from '../article-category.model';
 import { ArticleService } from '../article.service';
 import { faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +23,7 @@ export class EditArticleComponent implements OnInit {
   editForm: FormGroup;
   faSave = faSave;
   faTrash = faTrash;
+  imgUrl: string;
   constructor(
     private modalService: NgbModal,
     private articleService: ArticleService,
@@ -32,7 +33,6 @@ export class EditArticleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.id);
     this.subscription = this.articleService.categoriesChanged.subscribe(
       (categories: ArticleCategory[]) => {
         this.categories = categories;
@@ -40,34 +40,38 @@ export class EditArticleComponent implements OnInit {
     );
     this.categories = this.articleService.getCategories();
     this.editForm = this.formBuilder.group({
-      id: [{value: '', disabled: true}],
+      id: [{ value: '', disabled: true }],
       name: ['', Validators.required],
       price: ['', Validators.required],
       category: ['', Validators.required],
-      imgName: ['', Validators.required]
     });
     this.article = this.articleService.getArticle(this.id);
-    console.log(this.article)
     this.editForm.setValue(this.article);
+    this.dataService
+      .getUrl(this.article.id)
+      .subscribe((value) => (this.imgUrl = value));
   }
 
   onDeleteArticle() {
-    this.articleService.removeArticle(this.editForm.getRawValue())
-    this.dataService.deleteArticle(this.editForm.getRawValue().id)
+    const id = this.editForm.get('id').value;
+    this.articleService.removeArticle(this.editForm.getRawValue());
+    this.dataService.deleteArticle(id);
+    this.dataService.deleteFile(id);
     this.modalService.dismissAll();
-    this.router.navigateByUrl('/')
   }
 
   onUpdateArticle() {
     this.articleService.updateArticle(this.editForm.getRawValue());
     this.dataService.updateArticle(this.editForm.getRawValue());
     this.modalService.dismissAll();
-    this.router.navigateByUrl('/')
   }
 
   // Called when file is changed
   public onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+    this.dataService
+      .uploadFile(this.selectedFile, this.article.id)
+      .subscribe((value) => (this.imgUrl = value));
   }
 
   onCloseModals() {

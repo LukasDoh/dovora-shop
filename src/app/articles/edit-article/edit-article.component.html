@@ -63,14 +63,12 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
-            <input
-              type="text"
-              class="form-control"
-              id="inputArticleImage"
-              formControlName="imgName"
-            />
-            <img src="../../../assets/img/{{article.imgName}}" alt="" height="90px" width="90px">
+            <img [src]="imgUrl" alt="Bild" width="200" height="300">
         </div>
+      </div>
+      <div class="form-row">
+        <label for="fileInputEdit">Bild ändern:</label>
+        <input type="file" id="fileInputEdit" class="form-control-file" (change)="onFileChanged($event)">
       </div>
       <div class="btn-group float-right">
         <button

@@ -65,11 +65,11 @@
               type="file"
               id="inputArticleImage"
               formControlName="image"
-              (change)="onFileChanged($event)"
+              (change)="onUpload($event)"
             />
-            <label class="custom-file-label" for="inputArticleImage"
-              >Bild auswählen</label
-            >
+            <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+              File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
+          </div>
           </div>
         </div>
       </div>

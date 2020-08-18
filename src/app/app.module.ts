@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireStorageModule } from '@angular/fire/storage'
+
 
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './articles/articles.component';
@@ -54,6 +57,13 @@ const routes: Routes = [
     NgbModule,
     FontAwesomeModule,
     RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyBBen5fGKFHJgXdLQXD27MzBEjV_sx9gPI",
+      authDomain: "dovora-shop.firebaseapp.com",
+      storageBucket: "dovora-shop.appspot.com",
+      projectId: "dovora-shop",
+    }),
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

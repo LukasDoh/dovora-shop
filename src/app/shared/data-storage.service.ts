@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { tap, finalize, switchMap } from 'rxjs/operators';
+import {
+  AngularFireStorage,
+  AngularFireUploadTask,
+} from '@angular/fire/storage';
 
 import { Article } from '../articles/article.model';
 import { ArticleService } from '../articles/article.service';
-import { ArticlesComponent } from '../articles/articles.component';
 import { ArticleCategory } from '../articles/article-category.model';
+import { Observable, from } from 'rxjs';
 
 const url = 'http://localhost:8080/';
 
@@ -14,13 +17,13 @@ const url = 'http://localhost:8080/';
   providedIn: 'root',
 })
 export class DataStorageService {
-  retrieveResponse: any;
-  base64Data: any;
-  retrievedImage: any;
+  downloadURL: Observable<string>;
+  uploadPercent: Observable<number>;
 
   constructor(
     private http: HttpClient,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private afStorage: AngularFireStorage
   ) {}
 
   fetchArticles() {
@@ -63,5 +66,30 @@ export class DataStorageService {
       .subscribe((response) => {
         console.log(response);
       });
+  }
+
+  uploadFile(file: File, id: number): Observable<string> {
+    const path = `images/${id}`;
+    const task = this.afStorage.upload(path, file);
+    return this.getDownloadUrl(task, path);
+  }
+
+  getDownloadUrl(
+    uploadTask: AngularFireUploadTask,
+    path: string
+  ): Observable<string> {
+    return from(uploadTask).pipe(
+      switchMap((_) => this.afStorage.ref(path).getDownloadURL())
+    );
+  }
+
+  getUrl(id: number) {
+    const ref = this.afStorage.ref('images/' + id);
+    return ref.getDownloadURL();
+  }
+
+  deleteFile(id) {
+    const ref = this.afStorage.ref('images/' + id);
+    ref.delete();
   }
 }

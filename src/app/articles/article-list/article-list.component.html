@@ -3,8 +3,8 @@
     <div class="card">
       <a href="#">
         <img
-          src="../../assets/img/{{ article.imgName }}"
-          [alt]="article.name"
+          [src]="getImage(article.id)"
+          [alt]="article.id"
           class="card-img-top rounded img-fluid"
         />
         <div class="card-body">
