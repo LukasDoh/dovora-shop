@@ -44,10 +44,14 @@ export class AddArticleComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       id: [{ value: this.nextArticleId, disabled: true }],
       name: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [
+        '',
+        [Validators.required, Validators.pattern('^[0-9]*[.,,]?[0-9]{0,2}$')],
+      ],
       category: ['', Validators.required],
       image: [''],
     });
+    console.log(this.addForm.controls.name)
   }
 
   // Called when file is changed
@@ -55,7 +59,7 @@ export class AddArticleComponent implements OnInit {
     this.selectedFile = event.target.files[0];
     this.dataStorageService
       .uploadFile(this.selectedFile, this.nextArticleId)
-      .subscribe((value) => this.imgUrl = value);
+      .subscribe((value) => (this.imgUrl = value));
   }
 
   onSaveArticle(addMultiple: Boolean) {

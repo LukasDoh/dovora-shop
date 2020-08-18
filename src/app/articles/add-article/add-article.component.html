@@ -20,6 +20,7 @@
             class="form-control"
             id="inputArticleNo"
             formControlName="id"
+            required
           />
         </div>
         <div class="form-group col-md-10">
@@ -29,6 +30,11 @@
             class="form-control"
             id="inputArticleName"
             formControlName="name"
+            [ngClass]="{
+              invalid:
+                addForm.controls.name.invalid &&
+                (addForm.controls.name.dirty || addForm.controls.name.touched)
+            }"
           />
         </div>
       </div>
@@ -40,7 +46,20 @@
             class="form-control"
             id="inputArticlePrice"
             formControlName="price"
+            [ngClass]="{
+              invalid:
+                addForm.controls.price.invalid &&
+                (addForm.controls.price.dirty || addForm.controls.price.touched)
+            }"
           />
+          <div
+            *ngIf="
+              addForm.controls.price.invalid &&
+              (addForm.controls.price.dirty || addForm.controls.price.touched)
+            "
+          >
+          <small class="text-danger">Format</small>
+        </div>
         </div>
         <div class="form-group col-md-10">
           <label for="inputArticleCategory">Kategorie</label>
@@ -49,6 +68,12 @@
             class="form-control"
             id="inputArticleCategory"
             formControlName="category"
+            [ngClass]="{
+              invalid:
+                addForm.controls.category.invalid &&
+                (addForm.controls.category.dirty ||
+                  addForm.controls.category.touched)
+            }"
           >
             <option
               *ngFor="let category of categories"
@@ -67,9 +92,13 @@
               formControlName="image"
               (change)="onUpload($event)"
             />
-            <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
-              File uploaded: <a [href]="downloadSrc">{{downloadSrc}}</a>
-          </div>
+            <div
+              *ngIf="downloadURL | async; let downloadSrc"
+              class="alert alert-info"
+              role="alert"
+            >
+              File uploaded: <a [href]="downloadSrc">{{ downloadSrc }}</a>
+            </div>
           </div>
         </div>
       </div>
@@ -79,6 +108,7 @@
           class="btn btn-secondary"
           style="background-color: #47668a !important;"
           (click)="onSaveArticle(true)"
+          [disabled]="!addForm.valid"
         >
           <fa-icon [icon]="faPlus"></fa-icon> Weiteren hinzufügen
         </button>
@@ -87,6 +117,7 @@
           class="btn btn-secondary"
           style="background-color: #364f6b !important;"
           (click)="onSaveArticle(false)"
+          [disabled]="!addForm.valid"
         >
           <fa-icon [icon]="faSave"></fa-icon> Speichern
         </button>
