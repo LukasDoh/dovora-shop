@@ -47,7 +47,7 @@ const routes: Routes = [
     HeaderComponent,
     SidebarComponent,
     AddArticleComponent,
-    EditArticleComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,

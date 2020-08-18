@@ -25,6 +25,8 @@ export class AddArticleComponent implements OnInit {
   faPlus = faPlusSquare;
   downloadURL: Observable<string>;
   imgUrl: string;
+  validFile: boolean;
+  validFileTypes: string[] = ['jpg', 'gif', 'png'];
 
   constructor(
     private modalService: NgbModal,
@@ -44,18 +46,37 @@ export class AddArticleComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       id: [{ value: this.nextArticleId, disabled: true }],
       name: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [
+        '',
+        [Validators.required, Validators.pattern('^[0-9]*[.,,]?[0-9]{0,2}$')],
+      ],
       category: ['', Validators.required],
       image: [''],
     });
+    this.addForm.setErrors({noImage: true})
   }
 
   // Called when file is changed
   public onUpload(event) {
     this.selectedFile = event.target.files[0];
+    if (!this.selectedFile) {
+      this.validFile = null;
+      this.addForm.setErrors(null);
+      return;
+    }
+    const fileType = this.selectedFile.name.substring(
+      this.selectedFile.name.length - 3
+    );
+    if (this.validFileTypes.indexOf(fileType) === -1) {
+      this.validFile = false;
+      this.addForm.setErrors({ incorrect: true });
+      return;
+    }
     this.dataStorageService
       .uploadFile(this.selectedFile, this.nextArticleId)
-      .subscribe((value) => this.imgUrl = value);
+      .subscribe((value) => (this.imgUrl = value));
+    this.validFile = true;
+    this.addForm.setErrors(null);
   }
 
   onSaveArticle(addMultiple: Boolean) {

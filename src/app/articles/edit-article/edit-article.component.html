@@ -30,6 +30,7 @@
             id="inputArticleName"
             formControlName="name"
             required
+            [ngClass]="{invalid: editForm.controls.name.invalid && (editForm.controls.name.dirty || editForm.controls.name.touched)}"
           />
         </div>
       </div>
@@ -42,6 +43,7 @@
             id="inputArticlePrice"
             formControlName="price"
             required
+            [ngClass]="{invalid: editForm.controls.price.invalid && (editForm.controls.price.dirty || editForm.controls.price.touched)}"
           />
         </div>
         <div class="form-group col-md-10">
@@ -52,6 +54,7 @@
             id="inputArticleCategory"
             formControlName="category"
             required
+            [ngClass]="{invalid: editForm.controls.category.invalid && (editForm.controls.category.dirty || editForm.controls.category.touched)}"
           >
             <option
               *ngFor="let category of categories"
@@ -69,6 +72,7 @@
       <div class="form-row">
         <label for="fileInputEdit">Bild ändern:</label>
         <input type="file" id="fileInputEdit" class="form-control-file" (change)="onFileChanged($event)">
+        <div *ngIf="!validFile" class="text-danger">Ungültige Datei</div>
       </div>
       <div class="btn-group float-right">
         <button
@@ -83,6 +87,7 @@
           class="btn btn-secondary"
           style="background-color: #364f6b !important;"
           (click)="onUpdateArticle()"
+          [disabled]="!editForm.valid"
         >
           <fa-icon [icon]="faSave"></fa-icon> Speichern
         </button>

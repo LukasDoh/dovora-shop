@@ -15,7 +15,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
   styleUrls: ['./edit-article.component.css'],
 })
 export class EditArticleComponent implements OnInit {
-  selectedFile: any;
+  selectedFile: File;
   subscription: Subscription;
   categories: ArticleCategory[] = [];
   @Input() id: number;
@@ -24,6 +24,9 @@ export class EditArticleComponent implements OnInit {
   faSave = faSave;
   faTrash = faTrash;
   imgUrl: string;
+  validFile: boolean = true;
+  validFileTypes: string[] = ['jpg', 'gif', 'png'];
+
   constructor(
     private modalService: NgbModal,
     private articleService: ArticleService,
@@ -42,7 +45,10 @@ export class EditArticleComponent implements OnInit {
     this.editForm = this.formBuilder.group({
       id: [{ value: '', disabled: true }],
       name: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [
+        '',
+        [Validators.required, Validators.pattern('^[0-9]*[.,,]?[0-9]{0,2}$')],
+      ],
       category: ['', Validators.required],
     });
     this.article = this.articleService.getArticle(this.id);
@@ -67,8 +73,21 @@ export class EditArticleComponent implements OnInit {
   }
 
   // Called when file is changed
-  public onFileChanged(event) {
+  onFileChanged(event) {
     this.selectedFile = event.target.files[0];
+    if (!this.selectedFile) {
+      this.validFile = true;
+      this.editForm.setErrors(null);
+      return;
+    }
+    const fileType = this.selectedFile.name.substring(
+      this.selectedFile.name.length - 3
+    );
+    if (this.validFileTypes.indexOf(fileType) === -1) {
+      this.validFile = false;
+      this.editForm.setErrors({ incorrect: true });
+      return;
+    }
     this.dataService
       .uploadFile(this.selectedFile, this.article.id)
       .subscribe((value) => (this.imgUrl = value));
