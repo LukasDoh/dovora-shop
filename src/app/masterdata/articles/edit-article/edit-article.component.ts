@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { ArticleCategory } from '../article-category.model';
 import { ArticleService } from '../article.service';
@@ -32,7 +32,8 @@ export class EditArticleComponent implements OnInit {
     private articleService: ArticleService,
     private dataService: DataStorageService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public activeModal: NgbActiveModal
   ) {}
 
   ngOnInit(): void {
@@ -94,6 +95,6 @@ export class EditArticleComponent implements OnInit {
   }
 
   onCloseModals() {
-    this.modalService.dismissAll();
+    this.activeModal.dismiss()
   }
 }

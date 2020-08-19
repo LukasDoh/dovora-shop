@@ -17,6 +17,10 @@ import { AddArticleComponent } from './masterdata/articles/add-article/add-artic
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditArticleComponent } from './masterdata/articles/edit-article/edit-article.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { DataViewComponent } from './masterdata/data-view/data-view.component';
+import { HomeComponent } from './home/home.component';
+import { ArticleDataViewComponent } from './masterdata/data-view/article-data-view/article-data-view.component';
+import { CustomerDataViewComponent } from './masterdata/data-view/customer-data-view/customer-data-view.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     HeaderComponent,
     SidebarComponent,
     AddArticleComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    DataViewComponent,
+    HomeComponent,
+    ArticleDataViewComponent,
+    CustomerDataViewComponent,
   ],
   imports: [
     BrowserModule,

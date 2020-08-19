@@ -1,0 +1,38 @@
+<div class="row row-cols-1 mx-auto">
+  <div class="col mb-4">
+    <div class="card mt-5">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a
+              routerLink="articles"
+              class="nav-link"
+              [ngClass]="{ active: checkRoute('/masterdata/articles') }"
+              >Artikel</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="customers"
+              class="nav-link"
+              [ngClass]="{ active: checkRoute('/masterdata/customers') }"
+              >Kunden</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="orders"
+              class="nav-link"
+              [ngClass]="{ active: checkRoute('/masterdata/orders') }"
+              >Bestellungen</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div *ngIf="checkRoute('/masterdata')">Bitte Kategorie wählen!</div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

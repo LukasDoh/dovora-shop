@@ -4,9 +4,11 @@ import { Article } from '../article.model';
 import { Subscription } from 'rxjs';
 
 import { ArticleService } from '../article.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
+import {
+  AngularFireStorage,
+  AngularFireStorageReference,
+} from '@angular/fire/storage';
 
 @Component({
   selector: 'app-article-list',
@@ -22,20 +24,22 @@ export class ArticleListComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private dataService: DataStorageService,
     private storage: AngularFireStorage
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
+    console.log('INIT');
+    console.log(this.articles[0]);
     this.subscription = this.articleService.articlesChanged.subscribe(
       (articles: Article[]) => {
         this.articles = articles;
-        this.articles.forEach(article => {
-          const ref: AngularFireStorageReference = this.storage.ref('/images/'+article.id);
-          ref.getDownloadURL().subscribe(value => {
+        this.articles.forEach((article) => {
+          const ref: AngularFireStorageReference = this.storage.ref(
+            '/images/' + article.id
+          );
+          ref.getDownloadURL().subscribe((value) => {
             this.imgUrl[article.id] = value;
-          })
+          });
         });
       }
     );

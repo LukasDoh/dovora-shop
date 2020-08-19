@@ -28,18 +28,19 @@ export class ArticleModalContainer implements OnDestroy {
         this.currentDialog = this.modalService.open(EditArticleComponent);
         this.currentDialog.componentInstance.id = +params.id;
       } else if (params.operation === 'close') {
-        router.navigateByUrl('/');
+        console.log("modalClose")
+        router.navigateByUrl('/masterdata/articles');
       } else {
-        router.navigateByUrl('/');
+        router.navigateByUrl('/masterdata/articles');
       }
 
       // Return to home page when modal is closed
       this.currentDialog.result.then(
         (result) => {
-          router.navigateByUrl('/');
+          router.navigateByUrl('/masterdata/articles');
         },
         (reason) => {
-          router.navigateByUrl('/');
+          router.navigateByUrl('/masterdata/articles');
         }
       );
     });
