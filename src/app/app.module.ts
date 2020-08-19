@@ -6,16 +6,16 @@ import { AngularFireStorageModule } from '@angular/fire/storage'
 
 
 import { AppComponent } from './app.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { ArticleListComponent } from './articles/article-list/article-list.component';
+import { ArticlesComponent } from './masterdata/articles/articles.component';
+import { ArticleListComponent } from './masterdata/articles/article-list/article-list.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AddArticleComponent } from './articles/add-article/add-article.component';
+import { AddArticleComponent } from './masterdata/articles/add-article/add-article.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditArticleComponent } from './articles/edit-article/edit-article.component';
+import { EditArticleComponent } from './masterdata/articles/edit-article/edit-article.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 

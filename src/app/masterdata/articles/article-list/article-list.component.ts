@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Article } from '../article.model';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { ArticleService } from '../article.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
-import { regExpEscape } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-article-list',

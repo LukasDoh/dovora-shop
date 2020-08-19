@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus, faPen } from '@fortawesome/free-solid-svg-icons'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Article } from '../articles/article.model'
+import { Article } from '../masterdata/articles/article.model'
 
 @Component({
   selector: 'app-header',

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArticlesComponent } from '../articles/articles.component';
-import { ArticleModalContainer } from '../articles/article-modal-container.component';
+import { ArticlesComponent } from '../masterdata/articles/articles.component';
+import { ArticleModalContainer } from '../masterdata/articles/article-modal-container.component';
 
 const routes: Routes = [
   {

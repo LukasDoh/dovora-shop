@@ -6,9 +6,9 @@ import {
   AngularFireUploadTask,
 } from '@angular/fire/storage';
 
-import { Article } from '../articles/article.model';
-import { ArticleService } from '../articles/article.service';
-import { ArticleCategory } from '../articles/article-category.model';
+import { Article } from '../masterdata/articles/article.model';
+import { ArticleService } from '../masterdata/articles/article.service';
+import { ArticleCategory } from '../masterdata/articles/article-category.model';
 import { Observable, from } from 'rxjs';
 
 const url = 'http://localhost:8080/';

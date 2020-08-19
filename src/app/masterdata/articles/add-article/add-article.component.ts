@@ -7,8 +7,6 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { ArticleCategory } from '../article-category.model';
 import { Subscription, Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-article',
