@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
-import { ArticleCategory } from '../article-category.model';
-import { ArticleService } from '../article.service';
+import { ArticleCategory } from '../../../articles/article-category.model';
+import { ArticleService } from '../../../articles/article.service';
 import { faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Article } from '../article.model';
+import { Article } from '../../../articles/article.model';
 import { Router } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 

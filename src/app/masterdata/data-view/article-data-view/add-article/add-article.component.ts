@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { faSave, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
-import { Article } from '../article.model';
-import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ArticleService } from '../article.service';
+import { Article } from '../../../articles/article.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ArticleService } from '../../../articles/article.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { ArticleCategory } from '../article-category.model';
+import { ArticleCategory } from '../../../articles/article-category.model';
 import { Subscription, Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

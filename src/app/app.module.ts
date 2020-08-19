@@ -13,9 +13,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AddArticleComponent } from './masterdata/articles/add-article/add-article.component';
+import { AddArticleComponent } from './masterdata/data-view/article-data-view/add-article/add-article.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditArticleComponent } from './masterdata/articles/edit-article/edit-article.component';
+import { EditArticleComponent } from './masterdata/data-view/article-data-view/edit-article/edit-article.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { DataViewComponent } from './masterdata/data-view/data-view.component';
 import { HomeComponent } from './home/home.component';

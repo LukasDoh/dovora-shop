@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap, finalize, switchMap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import {
   AngularFireStorage,
   AngularFireUploadTask,

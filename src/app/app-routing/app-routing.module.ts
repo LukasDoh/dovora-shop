@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticlesComponent } from '../masterdata/articles/articles.component';
-import { ArticleModalContainer } from '../masterdata/articles/article-modal-container.component';
+import { ArticleModalContainer } from '../masterdata/data-view/article-data-view/article-modal-container.component';
 import { DataViewComponent } from '../masterdata/data-view/data-view.component';
 import { HomeComponent } from '../home/home.component';
 import { ArticleDataViewComponent } from '../masterdata/data-view/article-data-view/article-data-view.component';
