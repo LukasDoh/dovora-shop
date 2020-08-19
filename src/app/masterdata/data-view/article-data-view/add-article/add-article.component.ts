@@ -6,7 +6,7 @@ import { ArticleService } from '../../../articles/article.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { ArticleCategory } from '../../../articles/article-category.model';
 import { Subscription, Observable } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-article',
@@ -21,13 +21,13 @@ export class AddArticleComponent implements OnInit {
   selectedFile: File = null;
   faSave = faSave;
   faPlus = faPlusSquare;
-  downloadURL: Observable<string>;
   imgUrl: string;
   validFile: boolean;
   validFileTypes: string[] = ['jpg', 'gif', 'png'];
 
   constructor(
     private modalService: NgbModal,
+    private activeModal: NgbActiveModal,
     private articleService: ArticleService,
     private dataStorageService: DataStorageService,
     private formBuilder: FormBuilder
@@ -87,7 +87,6 @@ export class AddArticleComponent implements OnInit {
     );
     this.articleService.addArticle(newArticle);
     this.dataStorageService.saveNewestArticle();
-    console.log(this.downloadURL);
     this.addForm.reset();
     if (addMultiple === false) {
       this.modalService.dismissAll();
@@ -95,7 +94,7 @@ export class AddArticleComponent implements OnInit {
     this.nextArticleId += 1;
   }
 
-  onCloseModals() {
-    this.modalService.dismissAll();
+  onCloseModal() {
+    this.activeModal.close();
   }
 }

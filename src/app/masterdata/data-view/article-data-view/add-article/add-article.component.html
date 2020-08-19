@@ -5,7 +5,7 @@
       type="button"
       class="btn close"
       aria-label="Close"
-      (click)="onCloseModals()"
+      (click)="onCloseModal()"
     >
       <span aria-hidden="true">&times;</span>
     </button>
@@ -58,8 +58,8 @@
               (addForm.controls.price.dirty || addForm.controls.price.touched)
             "
           >
-          <small class="text-danger">Format</small>
-        </div>
+            <small class="text-danger">Format</small>
+          </div>
         </div>
         <div class="form-group col-md-10">
           <label for="inputArticleCategory">Kategorie</label>
@@ -85,6 +85,7 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-12">
+          <img class="mb-2" *ngIf="imgUrl" src="{{ imgUrl }}" width="200" height="300" />
           <div class="custom-file">
             <input
               type="file"
@@ -92,13 +93,8 @@
               formControlName="image"
               (change)="onUpload($event)"
             />
-            <div *ngIf="validFile === false" class="text-danger">Ungültige Datei</div>
-            <div
-              *ngIf="downloadURL | async; let downloadSrc"
-              class="alert alert-info"
-              role="alert"
-            >
-              File uploaded: <a [href]="downloadSrc">{{ downloadSrc }}</a>
+            <div *ngIf="validFile === false" class="text-danger">
+              Ungültige Datei
             </div>
           </div>
         </div>

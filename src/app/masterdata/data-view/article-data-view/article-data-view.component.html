@@ -1,4 +1,4 @@
-<a class="btn pb-3" routerLink="/articles/add"
+<a class="btn pb-3" (click)="onOpenAdd()"
   ><fa-icon [icon]="faPlus"></fa-icon> Artikel anlegen</a
 >
 <table class="table">
@@ -22,7 +22,7 @@
         <img [src]="getImage(article.id)" alt="" width="40" height="60" />
       </td>
       <td>
-        <a class="btn btn-sm" routerLink="/articles/edit/{{ article.id }}"
+        <a class="btn btn-sm" (click)="onOpenEdit(article)"
           ><fa-icon [icon]="faPen"></fa-icon
         ></a>
       </td>

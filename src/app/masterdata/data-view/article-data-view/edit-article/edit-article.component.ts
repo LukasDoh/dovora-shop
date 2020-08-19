@@ -18,8 +18,7 @@ export class EditArticleComponent implements OnInit {
   selectedFile: File;
   subscription: Subscription;
   categories: ArticleCategory[] = [];
-  @Input() id: number;
-  article: Article;
+  @Input() article: Article;
   editForm: FormGroup;
   faSave = faSave;
   faTrash = faTrash;
@@ -31,7 +30,6 @@ export class EditArticleComponent implements OnInit {
     private modalService: NgbModal,
     private articleService: ArticleService,
     private dataService: DataStorageService,
-    private router: Router,
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal
   ) {}
@@ -52,7 +50,6 @@ export class EditArticleComponent implements OnInit {
       ],
       category: ['', Validators.required],
     });
-    this.article = this.articleService.getArticle(this.id);
     this.editForm.setValue(this.article);
     this.dataService
       .getUrl(this.article.id)
