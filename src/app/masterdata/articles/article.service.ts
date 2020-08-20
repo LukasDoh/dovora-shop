@@ -77,4 +77,22 @@ export class ArticleService {
     this.categories.push(category);
     this.categoriesChanged.next(this.categories.slice());
   }
+
+  updateCategory(category: ArticleCategory) {
+    const callback = (element) => element.id === category.id;
+    const index: number = this.categories.findIndex(callback);
+    if (index !== -1) {
+      this.categories[index] = category
+      this.categoriesChanged.next(this.categories.slice());
+    }
+  }
+
+  removeCategory(category: ArticleCategory) {
+    const callback = (element) => element.id === category.id;
+    const index: number = this.categories.findIndex(callback);
+    if (index !== -1) {
+      this.categories.splice(index, 1);
+      this.categoriesChanged.next(this.categories.slice());
+    }
+  }
 }

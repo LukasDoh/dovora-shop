@@ -25,6 +25,7 @@ import { AddArticleCategoryComponent } from './masterdata/data-view/article-data
 import { EditArticleCategoryComponent } from './masterdata/data-view/article-data-view/edit-article-category/edit-article-category.component';
 import { ArticleCategoryDataViewComponent } from './masterdata/data-view/article-category-data-view/article-category-data-view.component';
 import { AddCategoryComponent } from './masterdata/data-view/article-category-data-view/add-category/add-category.component';
+import { EditCategoryComponent } from './masterdata/data-view/article-category-data-view/edit-category/edit-category.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { AddCategoryComponent } from './masterdata/data-view/article-category-da
     EditArticleCategoryComponent,
     ArticleCategoryDataViewComponent,
     AddCategoryComponent,
+    EditCategoryComponent,
   ],
   imports: [
     BrowserModule,

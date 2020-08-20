@@ -60,13 +60,13 @@ export class EditArticleComponent implements OnInit {
     this.articleService.removeArticle(this.editForm.getRawValue());
     this.dataService.deleteArticle(id);
     this.dataService.deleteFile(id);
-    this.modalService.dismissAll();
+    this.activeModal.close();
   }
 
   onUpdateArticle() {
     this.articleService.updateArticle(this.editForm.getRawValue());
     this.dataService.updateArticle(this.editForm.getRawValue());
-    this.modalService.dismissAll();
+    this.activeModal.close();
   }
 
   // Called when file is changed
@@ -91,6 +91,6 @@ export class EditArticleComponent implements OnInit {
   }
 
   onCloseModals() {
-    this.activeModal.dismiss()
+    this.activeModal.dismiss();
   }
 }

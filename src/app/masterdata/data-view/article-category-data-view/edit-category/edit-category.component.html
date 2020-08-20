@@ -1,0 +1,56 @@
+<div class="mb-5">
+  <div class="modal-header">
+    <h4 class="modal-title">Kategorie ändern</h4>
+    <button class="btn close" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputCategoryId">Id</label>
+          <input
+            type="text"
+            id="inputCategoryId"
+            class="form-control"
+            formControlName="id"
+            required
+          />
+        </div>
+        <div class="form-group col-md-10">
+          <label for="inputCategoryName">Bezeichnung</label>
+          <input
+            type="text"
+            id="inputCategoryName"
+            class="form-control"
+            formControlName="name"
+            [ngClass]="{
+              invalid:
+                editForm.controls.name.invalid &&
+                (editForm.controls.name.dirty || editForm.controls.name.touched)
+            }"
+          />
+        </div>
+      </div>
+      <div class="btn-group float-right">
+        <button
+          type="submit"
+          class="btn btn-secondary btn-danger"
+          (click)="onDelete()"
+        >
+          <fa-icon [icon]="faTrash"></fa-icon> Löschen
+        </button>
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #364f6b !important;"
+          (click)="onSave()"
+          [disabled]="!editForm.valid"
+        >
+          <fa-icon [icon]="faSave"></fa-icon> Speichern
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

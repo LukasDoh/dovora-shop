@@ -66,6 +66,12 @@ export class DataStorageService {
       });
   }
 
+  deleteCategory(id: number) {
+    return this.http.delete(url + 'categories/'+id).subscribe((response) => {
+      console.log(response);
+    });
+  }
+
   saveNewestArticle() {
     const articles = this.articleService.getArticles();
     const newArticle = articles[articles.length - 1];

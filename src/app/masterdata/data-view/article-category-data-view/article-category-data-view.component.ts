@@ -5,6 +5,7 @@ import { ArticleService } from '../../articles/article.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { EditCategoryComponent } from './edit-category/edit-category.component';
 
 @Component({
   selector: 'app-article-category-data-view',
@@ -35,5 +36,8 @@ export class ArticleCategoryDataViewComponent implements OnInit {
     const modalRef = this.modalService.open(AddCategoryComponent);
   }
 
-  onOpenEdit(category: ArticleCategory) {}
+  onOpenEdit(category: ArticleCategory) {
+    const modalRef = this.modalService.open(EditCategoryComponent);
+    modalRef.componentInstance.category = category;
+  }
 }
