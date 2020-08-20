@@ -21,6 +21,10 @@ import { DataViewComponent } from './masterdata/data-view/data-view.component';
 import { HomeComponent } from './home/home.component';
 import { ArticleDataViewComponent } from './masterdata/data-view/article-data-view/article-data-view.component';
 import { CustomerDataViewComponent } from './masterdata/data-view/customer-data-view/customer-data-view.component';
+import { AddArticleCategoryComponent } from './masterdata/data-view/article-data-view/add-article-category/add-article-category.component';
+import { EditArticleCategoryComponent } from './masterdata/data-view/article-data-view/edit-article-category/edit-article-category.component';
+import { ArticleCategoryDataViewComponent } from './masterdata/data-view/article-category-data-view/article-category-data-view.component';
+import { AddCategoryComponent } from './masterdata/data-view/article-category-data-view/add-category/add-category.component';
 
 
 @NgModule({
@@ -36,6 +40,10 @@ import { CustomerDataViewComponent } from './masterdata/data-view/customer-data-
     HomeComponent,
     ArticleDataViewComponent,
     CustomerDataViewComponent,
+    AddArticleCategoryComponent,
+    EditArticleCategoryComponent,
+    ArticleCategoryDataViewComponent,
+    AddCategoryComponent,
   ],
   imports: [
     BrowserModule,

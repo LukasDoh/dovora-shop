@@ -1,0 +1,58 @@
+<div class="mb-5">
+  <div class="modal-header">
+    <h4 class="modal-title" id="create-category">Kategorie anlegen</h4>
+    <button class="btn close" aria-label="Close" (click)="onCloseModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addForm">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputArticleNo">Id</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputCategoryId"
+            formControlName="id"
+            required
+          />
+        </div>
+        <div class="form-group col-md-10">
+          <label for="inputArticleName">Bezeichnung</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputCategoryName"
+            formControlName="name"
+            [ngClass]="{
+              invalid:
+                addForm.controls.name.invalid &&
+                (addForm.controls.name.dirty || addForm.controls.name.touched)
+            }"
+          />
+        </div>
+      </div>
+      <div class="btn-group float-right">
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #47668a !important;"
+          (click)="onSave(true)"
+          [disabled]="!addForm.valid"
+        >
+          <fa-icon [icon]="faPlus"></fa-icon> Weitere hinzufügen
+        </button>
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #364f6b !important;"
+          (click)="onSave(false)"
+          [disabled]="!addForm.valid"
+        >
+          <fa-icon [icon]="faSave"></fa-icon> Speichern
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

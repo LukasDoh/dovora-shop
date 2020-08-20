@@ -13,6 +13,14 @@
           </li>
           <li class="nav-item">
             <a
+              routerLink="articlecategories"
+              class="nav-link"
+              [ngClass]="{ active: checkRoute('/masterdata/articlecategories') }"
+              >Artikelkategorien</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
               routerLink="customers"
               class="nav-link"
               [ngClass]="{ active: checkRoute('/masterdata/customers') }"

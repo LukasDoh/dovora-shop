@@ -26,11 +26,10 @@ export class ArticleDataViewComponent implements OnInit {
   constructor(
     private articleService: ArticleService,
     private storage: AngularFireStorage,
-    private modalService: NgbModal,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
-    console.log('peep');
     this.subscription = this.articleService.articlesChanged.subscribe(
       (articles: Article[]) => {
         this.articles = articles;
@@ -47,13 +46,12 @@ export class ArticleDataViewComponent implements OnInit {
     });
   }
 
-
   onOpenAdd() {
     const modalRef = this.modalService.open(AddArticleComponent);
   }
 
   onOpenEdit(article: Article) {
-    const modalRef = this.modalService.open(EditArticleComponent)
+    const modalRef = this.modalService.open(EditArticleComponent);
     modalRef.componentInstance.article = article;
   }
 

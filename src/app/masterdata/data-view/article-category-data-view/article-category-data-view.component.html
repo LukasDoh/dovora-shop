@@ -1,0 +1,24 @@
+<a class="btn pb-3" (click)="onOpenAdd()">
+  <fa-icon [icon]="faPlus"></fa-icon>
+  Kategorie anlegen
+</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Bezeichnung</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td scope="row">{{ category.id }}</td>
+      <td>{{ category.name }}</td>
+      <td>
+        <a class="btn btn-sm" (click)="onOpenEdit(category)"
+          ><fa-icon [icon]="faPen"></fa-icon
+        ></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

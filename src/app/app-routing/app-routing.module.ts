@@ -5,6 +5,7 @@ import { ArticleModalContainer } from '../masterdata/data-view/article-data-view
 import { DataViewComponent } from '../masterdata/data-view/data-view.component';
 import { HomeComponent } from '../home/home.component';
 import { ArticleDataViewComponent } from '../masterdata/data-view/article-data-view/article-data-view.component';
+import { ArticleCategoryDataViewComponent } from '../masterdata/data-view/article-category-data-view/article-category-data-view.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,12 +26,28 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'masterdata', component: DataViewComponent, children: [
-    {
-      path: 'articles',
-      component: ArticleDataViewComponent
-    }
-  ] },
+  {
+    path: 'masterdata',
+    component: DataViewComponent,
+    children: [
+      {
+        path: 'articles',
+        component: ArticleDataViewComponent,
+      },
+      {
+        path: 'articlecategories',
+        component: ArticleCategoryDataViewComponent,
+      },
+      {
+        path: 'customers',
+        redirectTo: '',
+      },
+      {
+        path: 'orders',
+        redirectTo: '',
+      },
+    ],
+  },
   { path: '**', redirectTo: '' },
 ];
 

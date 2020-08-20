@@ -6,7 +6,6 @@ import { ArticleService } from '../../../articles/article.service';
 import { faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Article } from '../../../articles/article.model';
-import { Router } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({

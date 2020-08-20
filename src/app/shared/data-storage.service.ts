@@ -57,12 +57,31 @@ export class DataStorageService {
     );
   }
 
+  updateCategory(category: ArticleCategory) {
+    const id: number = category.id;
+    return this.http
+      .put(url + 'categories/' + id, category)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
   saveNewestArticle() {
     const articles = this.articleService.getArticles();
     const newArticle = articles[articles.length - 1];
     console.log(newArticle);
     return this.http
       .post(url + 'articles', newArticle)
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  saveNewestCategory() {
+    const categories = this.articleService.getCategories();
+    const newCategory = categories[categories.length - 1];
+    return this.http
+      .post(url + 'categories', newCategory)
       .subscribe((response) => {
         console.log(response);
       });

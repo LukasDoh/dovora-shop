@@ -38,6 +38,10 @@ export class ArticleService {
     return this.categories.slice();
   }
 
+  getLastCategory() {
+    return this.categories[this.categories.length -1];
+  }
+
   getArticle(id: number) {
     return this.articles.find((x) => x.id == id);
   }
