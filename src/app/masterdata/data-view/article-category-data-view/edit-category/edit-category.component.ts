@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ArticleService } from 'src/app/masterdata/articles/article.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -21,7 +21,6 @@ export class EditCategoryComponent implements OnInit {
   @Input() category: ArticleCategory;
 
   constructor(
-    private modalService: NgbModal,
     private articleService: ArticleService,
     private dataService: DataStorageService,
     private formBuilder: FormBuilder,

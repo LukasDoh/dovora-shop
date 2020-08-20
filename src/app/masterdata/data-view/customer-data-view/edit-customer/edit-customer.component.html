@@ -1,1 +1,136 @@
-<p>edit-customer works!</p>
+<div class="mb-5">
+  <div class="modal-header">
+    <h4 class="modal-title">Kunden anlegen</h4>
+    <button class="btn close" aria-label="Close" (click)="onClose()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputCustomerId">Kundennr.</label>
+          <input
+            type="text"
+            id="inputCustomerId"
+            class="form-control"
+            formControlName="id"
+            required
+          />
+        </div>
+        <div class="form-group col-md-5">
+          <label for="inputCustomerFirstName">Vorname</label>
+          <input
+            type="text"
+            id="inputCustomerFirstName"
+            class="form-control"
+            formControlName="firstName"
+            required
+            [ngClass]="{
+              invalid:
+                editForm.controls.firstName.invalid &&
+                (editForm.controls.firstName.dirty || editForm.controls.firstName.touched)
+            }"
+          />
+        </div>
+        <div class="form-group col-md-5">
+          <label for="inputCustomerLastName">Nachname</label>
+          <input
+            type="text"
+            id="inputCustomerLastName"
+            class="form-control"
+            formControlName="lastName"
+            required
+            [ngClass]="{
+              invalid:
+                editForm.controls.lastName.invalid &&
+                (editForm.controls.lastName.dirty || editForm.controls.lastName.touched)
+            }"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <label for="inputCustomerStreet">Straße</label>
+          <input
+            type="text"
+            id="inputCustomerStreet"
+            class="form-control"
+            formControlName="street"
+            required
+            [ngClass]="{
+              invalid:
+                editForm.controls.street.invalid &&
+                (editForm.controls.street.dirty || editForm.controls.street.touched)
+            }"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputCustomerZipCode">PLZ</label>
+          <input
+            type="text"
+            id="inputCustomerZipCode"
+            class="form-control"
+            formControlName="zipCode"
+            required
+            [ngClass]="{
+              invalid:
+                editForm.controls.zipCode.invalid &&
+                (editForm.controls.zipCode.dirty || editForm.controls.zipCode.touched)
+            }"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputCustomerCity">Ort</label>
+          <input
+            type="text"
+            id="inputCustomerCity"
+            class="form-control"
+            formControlName="city"
+            required
+            [ngClass]="{
+              invalid:
+                editForm.controls.city.invalid &&
+                (editForm.controls.city.dirty || editForm.controls.city.touched)
+            }"
+          />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputCustomerCountry">Land</label>
+          <input
+            type="text"
+            id="inputCustomerCountry"
+            class="form-control"
+            formControlName="country"
+            required
+            [ngClass]="{
+              invalid:
+                editForm.controls.country.invalid &&
+                (editForm.controls.country.dirty || editForm.controls.country.touched)
+            }"
+          />
+        </div>
+      </div>
+      <div class="btn-group float-right">
+        <button
+          type="submit"
+          class="btn btn-secondary btn-danger"
+          (click)="onDelete()"
+        >
+          <fa-icon [icon]="faTrash"></fa-icon> Löschen
+        </button>
+        <button
+          type="submit"
+          class="btn btn-secondary"
+          style="background-color: #364f6b !important;"
+          (click)="onSave()"
+          [disabled]="!editForm.valid"
+        >
+          <fa-icon [icon]="faSave"></fa-icon> Speichern
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

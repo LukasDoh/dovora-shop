@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { faSave, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from 'src/app/masterdata/customers/customer.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Customer } from 'src/app/masterdata/customers/customer.model';
@@ -18,7 +18,6 @@ export class AddCustomerComponent implements OnInit {
   faPlus = faPlus;
 
   constructor(
-    private modalService: NgbModal,
     private activeModal: NgbActiveModal,
     private customerService: CustomerService,
     private dataStorageService: DataStorageService,
@@ -26,15 +25,15 @@ export class AddCustomerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.nextCustomerId = this.customerService.getLastCustomer().id +1;
+    this.nextCustomerId = this.customerService.getLastCustomer().id + 1;
     this.addForm = this.formBuilder.group({
-      id: [{ value: ''}],
+      id: [{ value: this.nextCustomerId, disabled: true }],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       street: ['', Validators.required],
       zipCode: ['', Validators.required],
       city: ['', Validators.required],
-      country: ['', Validators.required]
+      country: ['', Validators.required],
     });
   }
 
@@ -60,6 +59,6 @@ export class AddCustomerComponent implements OnInit {
   }
 
   onClose() {
-    this.activeModal.close()
+    this.activeModal.close();
   }
 }
