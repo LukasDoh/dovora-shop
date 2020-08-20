@@ -14,5 +14,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.dataService.fetchArticles().subscribe();
     this.dataService.fetchCategories().subscribe();
+    this.dataService.fetchCustomers().subscribe();
   }
 }

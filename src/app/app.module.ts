@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire'
-import { AngularFireStorageModule } from '@angular/fire/storage'
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { AppComponent } from './app.component';
 import { ArticlesComponent } from './masterdata/articles/articles.component';
@@ -26,7 +25,8 @@ import { EditArticleCategoryComponent } from './masterdata/data-view/article-dat
 import { ArticleCategoryDataViewComponent } from './masterdata/data-view/article-category-data-view/article-category-data-view.component';
 import { AddCategoryComponent } from './masterdata/data-view/article-category-data-view/add-category/add-category.component';
 import { EditCategoryComponent } from './masterdata/data-view/article-category-data-view/edit-category/edit-category.component';
-
+import { AddCustomerComponent } from './masterdata/data-view/customer-data-view/add-customer/add-customer.component';
+import { EditCustomerComponent } from './masterdata/data-view/customer-data-view/edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +46,8 @@ import { EditCategoryComponent } from './masterdata/data-view/article-category-d
     ArticleCategoryDataViewComponent,
     AddCategoryComponent,
     EditCategoryComponent,
+    AddCustomerComponent,
+    EditCustomerComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,10 +58,10 @@ import { EditCategoryComponent } from './masterdata/data-view/article-category-d
     FontAwesomeModule,
     AppRoutingModule,
     AngularFireModule.initializeApp({
-      apiKey: "AIzaSyBBen5fGKFHJgXdLQXD27MzBEjV_sx9gPI",
-      authDomain: "dovora-shop.firebaseapp.com",
-      storageBucket: "dovora-shop.appspot.com",
-      projectId: "dovora-shop",
+      apiKey: 'AIzaSyBBen5fGKFHJgXdLQXD27MzBEjV_sx9gPI',
+      authDomain: 'dovora-shop.firebaseapp.com',
+      storageBucket: 'dovora-shop.appspot.com',
+      projectId: 'dovora-shop',
     }),
     AngularFireStorageModule,
   ],

@@ -1,1 +1,31 @@
-<p>customer-data-view works!</p>
+<a class="btn pb-3" (click)="onOpenAdd()">
+  <fa-icon [icon]="faPlus"></fa-icon> Kunden anlegen
+</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Kundennummer</th>
+      <th scope="col">Name</th>
+      <th scope="col">Straße</th>
+      <th scope="col">PLZ</th>
+      <th scope="col">Ort</th>
+      <th scope="col">Land</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers">
+      <td scope="row">{{ customer.id }}</td>
+      <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+      <td>{{ customer.street }}</td>
+      <td>{{ customer.zipCode }}</td>
+      <td>{{ customer.city }}</td>
+      <td>{{ customer.country }}</td>
+      <td>
+        <a class="btn btn-sm" (click)="onOpenEdit(customer)"
+          ><fa-icon [icon]="faPen"></fa-icon
+        ></a>
+      </td>
+    </tr>
+  </tbody>
+</table>

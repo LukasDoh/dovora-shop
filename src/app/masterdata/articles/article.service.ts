@@ -39,15 +39,15 @@ export class ArticleService {
   }
 
   getLastCategory() {
-    return this.categories[this.categories.length -1];
+    return this.categories[this.categories.length - 1];
   }
 
   getArticle(id: number) {
-    return this.articles.find((x) => x.id == id);
+    return this.articles.find((x) => x.id === id);
   }
 
   getCategory(id: number) {
-    return this.categories.find((x) => x.id == id);
+    return this.categories.find((x) => x.id === id);
   }
 
   addArticle(article: Article) {
@@ -59,7 +59,7 @@ export class ArticleService {
     const callback = (element) => element.id === article.id;
     const index: number = this.articles.findIndex(callback);
     if (index !== -1) {
-      this.articles[index] = article
+      this.articles[index] = article;
       this.articlesChanged.next(this.articles.slice());
     }
   }
@@ -82,7 +82,7 @@ export class ArticleService {
     const callback = (element) => element.id === category.id;
     const index: number = this.categories.findIndex(callback);
     if (index !== -1) {
-      this.categories[index] = category
+      this.categories[index] = category;
       this.categoriesChanged.next(this.categories.slice());
     }
   }

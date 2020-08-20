@@ -7,6 +7,7 @@ import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { ArticleCategory } from '../../../articles/article-category.model';
 import { Subscription, Observable } from 'rxjs';
 import { NgbModal, NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-article',
@@ -20,7 +21,7 @@ export class AddArticleComponent implements OnInit {
   addForm: FormGroup;
   selectedFile: File = null;
   faSave = faSave;
-  faPlus = faPlusSquare;
+  faPlus = faPlus;
   imgUrl: string;
   validFile: boolean;
   validFileTypes: string[] = ['jpg', 'gif', 'png'];
@@ -89,9 +90,10 @@ export class AddArticleComponent implements OnInit {
     this.dataStorageService.saveNewestArticle();
     this.addForm.reset();
     if (addMultiple === false) {
-      this.modalService.dismissAll();
+      this.activeModal.close();
     }
     this.nextArticleId += 1;
+    this.addForm.controls.id.setValue(this.nextArticleId);
   }
 
   onCloseModal() {
