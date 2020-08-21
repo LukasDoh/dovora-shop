@@ -11,22 +11,22 @@
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarContent">
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
+      <li class="nav-item" [hidden]="!currentUser">
         <a class="nav-link" routerLink="/masterdata" (click)="isMenuCollapsed = true">
           <fa-icon [icon]="faTable"></fa-icon> Stammdaten verwalten
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item"  [hidden]="currentUser">
         <a class="nav-link" (click)="isMenuCollapsed = true" (click)="onLogin()" style="cursor: pointer;">
           <fa-icon [icon]="faLogin"></fa-icon> Login
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true">
+      <li class="nav-item dropdown"  [hidden]="!currentUser">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" (click)="isMenuCollapsed = true" role="button" aria-haspopup="true" aria-expanded="false">
           <fa-icon [icon]="faUser"></fa-icon> User
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown" (click)="onLogout()">Abmelden</a>
+          <a class="dropdown-item" (click)="onLogout()" style="cursor: pointer;">Abmelden</a>
         </div>
       </li>
       <li class="nav-item">

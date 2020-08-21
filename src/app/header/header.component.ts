@@ -12,6 +12,7 @@ import { Article } from '../masterdata/articles/article.model';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../_services/token-storage.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -27,19 +28,30 @@ export class HeaderComponent implements OnInit {
   article = Article;
   isMenuCollapsed = true;
   closeResult = '';
+  currentUser: any = null;
 
-  constructor(private modalService: NgbModal, private auth: AuthService, private router: Router) {}
+  constructor(
+    private modalService: NgbModal,
+    private auth: AuthService,
+    private router: Router,
+    private tokenService: TokenStorageService
+  ) {}
 
   open(content) {
     this.modalService.open(content);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentUser = this.tokenService.getUser();
+  }
 
   onLogin() {
     this.modalService.open(LoginComponent);
   }
 
   onLogout() {
+    this.tokenService.signOut();
+    this.router.navigateByUrl('/');
+    window.location.reload();
   }
 }
