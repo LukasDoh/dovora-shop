@@ -26,6 +26,7 @@ import { EditCategoryComponent } from './masterdata/data-view/article-category-d
 import { AddCustomerComponent } from './masterdata/data-view/customer-data-view/add-customer/add-customer.component';
 import { EditCustomerComponent } from './masterdata/data-view/customer-data-view/edit-customer/edit-customer.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LoginComponent } from './login/login.component';
     AddCustomerComponent,
     EditCustomerComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

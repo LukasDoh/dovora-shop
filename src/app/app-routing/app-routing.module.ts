@@ -8,7 +8,7 @@ import { CustomerDataViewComponent } from '../masterdata/data-view/customer-data
 import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   {
     path: 'masterdata',
     component: DataViewComponent,
