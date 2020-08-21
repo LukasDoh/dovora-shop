@@ -17,14 +17,17 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="isMenuCollapsed = true" routerLink="/login" style="cursor: pointer;">
+        <a class="nav-link" (click)="isMenuCollapsed = true" (click)="onLogin()" style="cursor: pointer;">
           <fa-icon [icon]="faLogin"></fa-icon> Login
         </a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link" (click)="isMenuCollapsed = true">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" (click)="isMenuCollapsed = true">
           <fa-icon [icon]="faUser"></fa-icon> User
         </a>
+        <div class="dropdown-menu">
+          <a class="dropdown" (click)="onLogout()">Abmelden</a>
+        </div>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link" (click)="isMenuCollapsed = true">

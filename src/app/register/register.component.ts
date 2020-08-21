@@ -1,15 +1,55 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ConfirmPasswordValidator } from '../_helpers/confirm-password.validator';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.registerForm = this.formBuilder.group(
+      {
+        username: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            Validators.maxLength(20),
+          ],
+        ],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+      },
+      {
+        validator: ConfirmPasswordValidator('password', 'confirmPassword'),
+      }
+    );
   }
 
+  onSubmit(): void {
+    this.authService.register(this.registerForm.value).subscribe(
+      (data) => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      (err) => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
 }

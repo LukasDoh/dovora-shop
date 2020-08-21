@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Customer } from 'src/app/masterdata/customers/customer.model';
-import { CustomerService } from 'src/app/masterdata/customers/customer.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { CustomerService } from 'src/app/_services/customer.service';
+import { DataStorageService } from 'src/app/_services/data-storage.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ArticleService } from 'src/app/masterdata/articles/article.service';
+import { ArticleService } from 'src/app/_services/article.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faSave, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { ArticleCategory } from 'src/app/masterdata/articles/article-category.model';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { DataStorageService } from 'src/app/_services/data-storage.service';
 
 @Component({
   selector: 'app-add-category',

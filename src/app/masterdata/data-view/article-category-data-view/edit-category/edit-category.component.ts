@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ArticleService } from 'src/app/masterdata/articles/article.service';
-import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { ArticleService } from 'src/app/_services/article.service';
+import { DataStorageService } from 'src/app/_services/data-storage.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticleCategory } from 'src/app/masterdata/articles/article-category.model';
 import { Subscription } from 'rxjs';

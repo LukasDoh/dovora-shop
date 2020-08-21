@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlus, faPen } from '@fortawesome/free-solid-svg-icons';
 import { ArticleCategory } from '../../articles/article-category.model';
-import { ArticleService } from '../../articles/article.service';
+import { ArticleService } from '../../../_services/article.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { AddCategoryComponent } from './add-category/add-category.component';

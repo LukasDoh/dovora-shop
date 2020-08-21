@@ -16,6 +16,11 @@
             formControlName="username"
             id="inputUsername"
             required
+            [ngClass]="{
+              invalid:
+                loginForm.controls.username.invalid &&
+                (loginForm.controls.username.dirty || loginForm.controls.username.touched)
+            }"
           />
         </div>
       </div>
@@ -28,7 +33,17 @@
             formControlName="password"
             id="inputPassword"
             required
+            [ngClass]="{
+              invalid:
+                loginForm.controls.password.invalid &&
+                (loginForm.controls.password.dirty || loginForm.controls.password.touched)
+            }"
           />
+          <small
+          *ngIf="loginForm.controls.password.errors?.minlength"
+          class="text-danger"
+          >Passwort zu kurz</small
+        >
         </div>
       </div>
       <button

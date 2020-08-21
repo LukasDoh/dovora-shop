@@ -6,6 +6,7 @@ import { ArticleDataViewComponent } from '../masterdata/data-view/article-data-v
 import { ArticleCategoryDataViewComponent } from '../masterdata/data-view/article-category-data-view/article-category-data-view.component';
 import { CustomerDataViewComponent } from '../masterdata/data-view/customer-data-view/customer-data-view.component';
 import { LoginComponent } from '../login/login.component';
+import { RegisterComponent } from '../register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
     ],
   },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent},
   { path: '**', redirectTo: '' },
 ];
 

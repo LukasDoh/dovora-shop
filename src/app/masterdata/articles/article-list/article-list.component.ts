@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../article.model';
 import { Subscription } from 'rxjs';
 
-import { ArticleService } from '../article.service';
+import { ArticleService } from '../../../_services/article.service';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {
   AngularFireStorage,

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { ArticleService } from '../../articles/article.service';
+import { ArticleService } from '../../../_services/article.service';
 import { Subscription } from 'rxjs';
 import { Article } from '../../articles/article.model';
 import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';

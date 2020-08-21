@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from './shared/data-storage.service';
+import { DataStorageService } from './_services/data-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.fetchArticles().subscribe();
-    this.dataService.fetchCategories().subscribe();
-    this.dataService.fetchCustomers().subscribe();
   }
 }

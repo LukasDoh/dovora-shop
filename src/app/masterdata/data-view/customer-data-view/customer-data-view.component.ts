@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Customer } from '../../customers/customer.model';
 import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { CustomerService } from '../../customers/customer.service';
+import { CustomerService } from '../../../_services/customer.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';

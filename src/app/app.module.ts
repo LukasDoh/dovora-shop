@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule, Injectable } from '@angular/core';
+import {
+  HttpClientModule,
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
@@ -27,6 +33,17 @@ import { AddCustomerComponent } from './masterdata/data-view/customer-data-view/
 import { EditCustomerComponent } from './masterdata/data-view/customer-data-view/edit-customer/edit-customer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const xhr = req.clone({
+      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest'),
+    });
+    return next.handle(xhr);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -65,7 +82,7 @@ import { RegisterComponent } from './register/register.component';
     }),
     AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

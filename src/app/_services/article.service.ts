@@ -1,8 +1,8 @@
-import { Injectable, ComponentFactoryResolver } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { Article } from './article.model';
+import { Article } from '../masterdata/articles/article.model';
 import { Subject } from 'rxjs';
-import { ArticleCategory } from './article-category.model';
+import { ArticleCategory } from '../masterdata/articles/article-category.model';
 
 @Injectable({
   providedIn: 'root',

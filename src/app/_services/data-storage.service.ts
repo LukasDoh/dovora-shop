@@ -7,11 +7,11 @@ import {
 } from '@angular/fire/storage';
 
 import { Article } from '../masterdata/articles/article.model';
-import { ArticleService } from '../masterdata/articles/article.service';
+import { ArticleService } from './article.service';
 import { ArticleCategory } from '../masterdata/articles/article-category.model';
 import { Observable, from } from 'rxjs';
 import { Customer } from '../masterdata/customers/customer.model';
-import { CustomerService } from '../masterdata/customers/customer.service';
+import { CustomerService } from './customer.service';
 
 const url = 'http://localhost:8080/';
 
