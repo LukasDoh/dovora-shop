@@ -5,6 +5,7 @@ import { HomeComponent } from '../home/home.component';
 import { ArticleDataViewComponent } from '../masterdata/data-view/article-data-view/article-data-view.component';
 import { ArticleCategoryDataViewComponent } from '../masterdata/data-view/article-category-data-view/article-category-data-view.component';
 import { CustomerDataViewComponent } from '../masterdata/data-view/customer-data-view/customer-data-view.component';
+import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' },
 ];
 
@@ -37,4 +39,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlus, faPen, faTable, faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faPen, faTable, faUser, faShoppingCart, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Article } from '../masterdata/articles/article.model'
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { Article } from '../masterdata/articles/article.model'
 export class HeaderComponent implements OnInit {
   faPlus = faPlus;
   faTable = faTable;
+  faLogin = faSignInAlt;
   faUser = faUser;
   faPen = faPen;
   faShoppingCart = faShoppingCart
@@ -25,6 +27,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onLogin() {
+    this.modalService.open(LoginComponent);
   }
 
 }

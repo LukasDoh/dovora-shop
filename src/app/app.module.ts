@@ -25,6 +25,7 @@ import { AddCategoryComponent } from './masterdata/data-view/article-category-da
 import { EditCategoryComponent } from './masterdata/data-view/article-category-data-view/edit-category/edit-category.component';
 import { AddCustomerComponent } from './masterdata/data-view/customer-data-view/add-customer/add-customer.component';
 import { EditCustomerComponent } from './masterdata/data-view/customer-data-view/edit-customer/edit-customer.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { EditCustomerComponent } from './masterdata/data-view/customer-data-view
     EditCategoryComponent,
     AddCustomerComponent,
     EditCustomerComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

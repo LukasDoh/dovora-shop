@@ -1,47 +1,30 @@
-<nav
-  class="navbar navbar-light navbar-expand-lg fixed-top"
-  style="background-color: #f5f5f5;"
->
-  <a class="navbar-brand" href="#">
+<nav class="navbar navbar-light navbar-expand-lg fixed-top" style="background-color: #f5f5f5;">
+  <a class="navbar-brand" routerLink="/">
     <img src="../../assets/img/brand.png" width="140" height="60" alt="" />
   </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarContent"
-    aria-controls="navbarContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-    (click)="isMenuCollapsed = !isMenuCollapsed"
-  >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"
+    (click)="isMenuCollapsed = !isMenuCollapsed">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div
-    [ngbCollapse]="isMenuCollapsed"
-    class="collapse navbar-collapse"
-    id="navbarContent"
-  >
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a href="#" class="nav-link" (click)="isMenuCollapsed = true">Home</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link" (click)="isMenuCollapsed = true"
-          >Impressum</a
-        >
-      </li>
-    </ul>
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarContent">
+
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link" routerLink="/masterdata" (click)="isMenuCollapsed = true">
           <fa-icon [icon]="faTable"></fa-icon> Stammdaten verwalten
         </a>
-    </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="isMenuCollapsed = true; onLogin()" style="cursor: pointer;">
+          <fa-icon [icon]="faLogin"></fa-icon> Login
+        </a>
+      </li>
       <li class="nav-item">
         <a href="#" class="nav-link" (click)="isMenuCollapsed = true">
-          <fa-icon [icon]="faUser"></fa-icon> User</a>
+          <fa-icon [icon]="faUser"></fa-icon> User
+        </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link" (click)="isMenuCollapsed = true">
