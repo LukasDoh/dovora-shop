@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../../_services/article.service';
 import { Subscription } from 'rxjs';
 import { Article } from '../../articles/article.model';

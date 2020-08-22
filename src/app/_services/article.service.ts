@@ -30,6 +30,13 @@ export class ArticleService {
     return this.articles.slice();
   }
 
+  getArticlesByCategory(category: string): Article[] {
+    const filteredArticles: Article[] = this.articles.filter(
+      (a) => a.category === category
+    );
+    return filteredArticles;
+  }
+
   getLastArticle() {
     return this.articles[this.articles.length - 1];
   }

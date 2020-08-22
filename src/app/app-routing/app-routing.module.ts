@@ -7,6 +7,7 @@ import { ArticleCategoryDataViewComponent } from '../masterdata/data-view/articl
 import { CustomerDataViewComponent } from '../masterdata/data-view/customer-data-view/customer-data-view.component';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -34,7 +35,9 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
+  { path: 'checkout', component: ShoppingCartComponent},
   { path: '**', redirectTo: '' },
+
 ];
 
 @NgModule({

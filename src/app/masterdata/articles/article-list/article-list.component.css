@@ -4,17 +4,17 @@
   object-fit: cover;
 }
 
-.card a,
-.card a:hover {
+.card>.wrapper,
+.card>.wrapper:hover {
   color: inherit;
   text-decoration: inherit;
 }
 
-.card a {
+.card>.wrapper {
   padding: 10px;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
-.card a:hover {
+.card>.wrapper:hover {
   transform: scale(1.035);
 }

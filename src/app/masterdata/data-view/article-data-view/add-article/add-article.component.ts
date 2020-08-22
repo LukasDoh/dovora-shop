@@ -3,7 +3,7 @@ import { faSave, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { Article } from '../../../articles/article.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ArticleService } from '../../../../_services/article.service';
-import { DataStorageService } from 'src/app/_services/data-storage.service';
+import { DataStorageService } from '../../../../_services/data-storage.service';
 import { ArticleCategory } from '../../../articles/article-category.model';
 import { Subscription, Observable } from 'rxjs';
 import { NgbModal, NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';

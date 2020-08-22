@@ -26,7 +26,6 @@ export class EditArticleComponent implements OnInit {
   validFileTypes: string[] = ['jpg', 'gif', 'png'];
 
   constructor(
-    private modalService: NgbModal,
     private articleService: ArticleService,
     private dataService: DataStorageService,
     private formBuilder: FormBuilder,

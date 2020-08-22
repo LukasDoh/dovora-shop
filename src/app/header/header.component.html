@@ -11,7 +11,7 @@
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarContent">
 
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" [hidden]="!currentUser">
+      <li class="nav-item" *ngIf="currentUser && hasRole('ROLE_EMPLOYEE', 'ROLE_ADMIN')">
         <a class="nav-link" routerLink="/masterdata" (click)="isMenuCollapsed = true">
           <fa-icon [icon]="faTable"></fa-icon> Stammdaten verwalten
         </a>
@@ -21,17 +21,17 @@
           <fa-icon [icon]="faLogin"></fa-icon> Login
         </a>
       </li>
-      <li class="nav-item dropdown"  [hidden]="!currentUser">
+      <li class="nav-item dropdown"  *ngIf="currentUser">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" (click)="isMenuCollapsed = true" role="button" aria-haspopup="true" aria-expanded="false">
-          <fa-icon [icon]="faUser"></fa-icon> User
+          <fa-icon [icon]="faUser"></fa-icon> {{ currentUser.username }}
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" (click)="onLogout()" style="cursor: pointer;">Abmelden</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link" (click)="isMenuCollapsed = true">
-          <fa-icon [icon]="faShoppingCart"></fa-icon> Warenkorb
+      <li class="nav-item" [hidden]="!currentUser">
+        <a href="#" class="nav-link" (click)="isMenuCollapsed = true" routerLink="/checkout">
+          <fa-icon [icon]="faShoppingCart"></fa-icon> Warenkorb <span class="badge badge-secondary">{{ cartItems.length }}</span>
         </a>
       </li>
     </ul>

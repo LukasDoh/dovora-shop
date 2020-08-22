@@ -1,84 +1,90 @@
-<div class="col-md-12">
-  <div class="card card-container">
-    <form [formGroup]="registerForm">
-      <div class="form-group">
-        <label for="username">Name</label>
-        <input
-          type="text"
-          id="username"
-          class="form-control"
-          formControlName="username"
-          required
-          [ngClass]="{
-            invalid:
-              registerForm.controls.username.invalid &&
-              (registerForm.controls.username.dirty ||
-                registerForm.controls.username.touched)
-          }"
-        />
-        <small
-          *ngIf="registerForm.controls.username.errors?.minlength"
-          class="text-danger"
-          >Benutzer zu kurz</small
-        >
-        <small
-          *ngIf="registerForm.controls.username.errors?.maxlength"
-          class="text-danger"
-          >Benutzer zu lang</small
-        >
-      </div>
-      <div class="form-group">
-        <label for="password">Passwort</label>
-        <input
-          type="password"
-          class="form-control"
-          formControlName="password"
-          id="password"
-          required
-          [ngClass]="{
-            invalid:
-              registerForm.controls.password.invalid &&
-              (registerForm.controls.password.dirty ||
-                registerForm.controls.password.touched)
-          }"
-        />
-        <small
-          *ngIf="registerForm.controls.password.errors?.minlength"
-          class="text-danger"
-          >Passwort zu kurz</small
-        >
-      </div>
-      <div class="form-group">
-        <label for="confirmPassword">Passwort bestätigen</label>
-        <input
-          type="password"
-          class="form-control"
-          formControlName="confirmPassword"
-          id="confirmPassword"
-          required
-          [ngClass]="{
-            invalid:
-              registerForm.controls.confirmPassword.invalid &&
-              (registerForm.controls.confirmPassword.dirty ||
-                registerForm.controls.confirmPassword.touched)
-          }"
-        />
-        <small
-          *ngIf="registerForm.controls.confirmPassword.errors?.confirmPasswordValidator"
-          class="text-danger"
-          >Passwörter stimmen nicht überein</small
-        >
-      </div>
-      <div class="form-group">
-        <button
-          type="submit"
-          class="btn btn-secondary"
-          style="background-color: #364f6b !important;"
-          (click)="onSubmit()"
-        >
-          Registrieren
-        </button>
-      </div>
-    </form>
+<div class="row">
+  <div class="col-md-5 mx-auto mt-5">
+    <h3>Jetzt registrieren:</h3>
+    <div class="card card-container p-2">
+      <form [formGroup]="registerForm">
+        <div class="form-group">
+          <label for="username">Name</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            formControlName="username"
+            required
+            [ngClass]="{
+              invalid:
+                registerForm.controls.username.invalid &&
+                (registerForm.controls.username.dirty ||
+                  registerForm.controls.username.touched)
+            }"
+          />
+          <small
+            *ngIf="registerForm.controls.username.errors?.minlength"
+            class="text-danger"
+            >Benutzer zu kurz</small
+          >
+          <small
+            *ngIf="registerForm.controls.username.errors?.maxlength"
+            class="text-danger"
+            >Benutzer zu lang</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="password">Passwort</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="password"
+            required
+            [ngClass]="{
+              invalid:
+                registerForm.controls.password.invalid &&
+                (registerForm.controls.password.dirty ||
+                  registerForm.controls.password.touched)
+            }"
+          />
+          <small
+            *ngIf="registerForm.controls.password.errors?.minlength"
+            class="text-danger"
+            >Passwort zu kurz</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Passwort bestätigen</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="confirmPassword"
+            id="confirmPassword"
+            required
+            [ngClass]="{
+              invalid:
+                registerForm.controls.confirmPassword.invalid &&
+                (registerForm.controls.confirmPassword.dirty ||
+                  registerForm.controls.confirmPassword.touched)
+            }"
+          />
+          <small
+            *ngIf="
+              registerForm.controls.confirmPassword.errors
+                ?.confirmPasswordValidator
+            "
+            class="text-danger"
+            >Passwörter stimmen nicht überein</small
+          >
+        </div>
+        <div class="form-group">
+          <button
+            type="submit"
+            class="btn btn-secondary float-right"
+            style="background-color: #364f6b !important;"
+            (click)="onSubmit()"
+          >
+            Registrieren
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

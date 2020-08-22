@@ -34,6 +34,7 @@ import { EditCustomerComponent } from './masterdata/data-view/customer-data-view
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
@@ -65,6 +66,7 @@ export class XhrInterceptor implements HttpInterceptor {
     EditCustomerComponent,
     LoginComponent,
     RegisterComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,11 @@
-<nav id="sidebar" class="bg-light mr-0 pl-3">
+<nav id="sidebar" class="bg-light mr-0 pl-3 d-none d-sm-block">
   <div class="sidebar-sticky">
     <div class="sidebar-header p-3">
       <h3>Bekleidung</h3>
     </div>
     <ul class="nav flex-column nav-pills">
-      <li class="nav-item">
-        <a href="#" class="nav-link">Hosen</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Jacken</a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">Hemden</a>
+      <li class="nav-item" *ngFor="let category of categories">
+        <a class="nav-link" >{{ category.name }}</a>
       </li>
     </ul>
   </div>
