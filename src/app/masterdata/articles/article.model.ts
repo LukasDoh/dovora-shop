@@ -1,3 +1,7 @@
+/**
+ * Article model
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 export class Article {
   public id: number;
   public name: string;

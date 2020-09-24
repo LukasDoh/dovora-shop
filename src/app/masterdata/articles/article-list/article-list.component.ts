@@ -12,6 +12,10 @@ import {
 import { ShoppingCartService } from 'src/app/_services/shopping-cart.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
+/**
+ * Article List Component: displays articles in grid
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
@@ -33,6 +37,9 @@ export class ArticleListComponent implements OnInit, OnDestroy {
     private tokenService: TokenStorageService
   ) {}
 
+  /**
+   * on init: subscribe to article list, get product images, checks for loggedin user and gets it.
+   */
   ngOnInit(): void {
     this.subscription = this.articleService.articlesChanged.subscribe(
       (articles: Article[]) => {
@@ -54,17 +61,28 @@ export class ArticleListComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Gets image for article
+   * @param id
+   * @returns
+   */
   getImage(id: number) {
     return this.imgUrl[id];
   }
 
+  /**
+   * Adds article to shopping cart
+   * @param article
+   */
   onAdd(article: Article) {
     this.cartService.addToCart(article);
     console.log(this.cartService.calcTotal());
   }
 
+  /**
+   * on destroy: unsubscribes
+   */
   ngOnDestroy() {
-    console.log('unsub');
     this.subscription.unsubscribe();
   }
 }

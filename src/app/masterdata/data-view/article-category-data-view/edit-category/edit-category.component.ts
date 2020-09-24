@@ -7,6 +7,10 @@ import { ArticleCategory } from 'src/app/masterdata/articles/article-category.mo
 import { Subscription } from 'rxjs';
 import { faSave, faTrash } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Edit Category Component: to edit a category via modal
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
@@ -27,6 +31,9 @@ export class EditCategoryComponent implements OnInit {
     public activeModal: NgbActiveModal
   ) {}
 
+  /**
+   * on init: subscribe to article categories list, gets categories, builds form
+   */
   ngOnInit(): void {
     this.subscription = this.articleService.categoriesChanged.subscribe(
       (categories: ArticleCategory[]) => {
@@ -41,12 +48,18 @@ export class EditCategoryComponent implements OnInit {
     this.editForm.setValue(this.category);
   }
 
+  /**
+   * Updates data from form in database
+   */
   onSave() {
     this.articleService.updateCategory(this.editForm.getRawValue());
     this.dataService.updateCategory(this.editForm.getRawValue());
     this.activeModal.close();
   }
 
+  /**
+   * Deletes a category
+   */
   onDelete() {
     const id = this.editForm.get('id').value;
     this.articleService.removeCategory(this.editForm.getRawValue());
@@ -54,6 +67,9 @@ export class EditCategoryComponent implements OnInit {
     this.activeModal.close();
   }
 
+  /**
+   * closes modal
+   */
   onClose() {
     this.activeModal.close();
   }

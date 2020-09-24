@@ -8,12 +8,21 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
+/**
+ * Authentication Service: provides login and register functions
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  /**
+   * Logins users
+   * @param credentials
+   * @returns login
+   */
   login(credentials): Observable<any> {
     return this.http.post(
       URL + 'signin',
@@ -25,6 +34,11 @@ export class AuthService {
     );
   }
 
+  /**
+   * Registers users
+   * @param user
+   * @returns register
+   */
   register(user): Observable<any> {
     return this.http.post(
       URL + 'signup',

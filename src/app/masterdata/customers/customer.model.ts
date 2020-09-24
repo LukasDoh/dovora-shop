@@ -1,3 +1,7 @@
+/**
+ * Customer model
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 export class Customer {
   public id: number;
   public firstName: String;

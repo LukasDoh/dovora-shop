@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
 
+/**
+ * Home component: Content part of page. Displays 
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

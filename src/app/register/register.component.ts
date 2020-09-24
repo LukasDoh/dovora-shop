@@ -4,6 +4,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConfirmPasswordValidator } from '../_helpers/confirm-password.validator';
 import { Router } from '@angular/router';
 
+/**
+ * Register Component: User Registration
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,9 +22,12 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router,
+    private router: Router
   ) {}
 
+  /**
+   * on init: builds register form
+   */
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
       {
@@ -41,13 +48,16 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  /**
+   * creates a new user if form was submitted
+   */
   onSubmit(): void {
     this.authService.register(this.registerForm.value).subscribe(
       (data) => {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this.router.navigateByUrl('/')
+        this.router.navigateByUrl('/');
       },
       (err) => {
         this.errorMessage = err.error.message;

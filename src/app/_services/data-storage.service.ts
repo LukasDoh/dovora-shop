@@ -15,6 +15,10 @@ import { CustomerService } from './customer.service';
 
 const url = 'http://localhost:8080/';
 
+/**
+ * Data Storage Service: Interacts with rest api and firebase storage.
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -29,6 +33,10 @@ export class DataStorageService {
     private afStorage: AngularFireStorage
   ) {}
 
+  /**
+   * Fetches articles
+   * @returns
+   */
   fetchArticles() {
     return this.http.get<Article[]>(url + 'articles').pipe(
       tap((articles) => {
@@ -37,6 +45,10 @@ export class DataStorageService {
     );
   }
 
+  /**
+   * Fetches categories
+   * @returns
+   */
   fetchCategories() {
     return this.http.get<ArticleCategory[]>(url + 'categories').pipe(
       tap((categories) => {
@@ -45,6 +57,10 @@ export class DataStorageService {
     );
   }
 
+  /**
+   * Fetches customers
+   * @returns
+   */
   fetchCustomers() {
     return this.http.get<Customer[]>(url + 'customers').pipe(
       tap((customers) => {
@@ -53,6 +69,11 @@ export class DataStorageService {
     );
   }
 
+  /**
+   * Updates article
+   * @param article
+   * @returns
+   */
   updateArticle(article: Article) {
     const id: number = article.id;
     return this.http
@@ -62,6 +83,11 @@ export class DataStorageService {
       });
   }
 
+  /**
+   * Updates category
+   * @param category
+   * @returns
+   */
   updateCategory(category: ArticleCategory) {
     const id: number = category.id;
     return this.http
@@ -71,6 +97,11 @@ export class DataStorageService {
       });
   }
 
+  /**
+   * Updates customer
+   * @param customer
+   * @returns
+   */
   updateCustomer(customer: Customer) {
     const id: number = customer.id;
     return this.http
@@ -80,24 +111,43 @@ export class DataStorageService {
       });
   }
 
+  /**
+   * Deletes article
+   * @param id
+   * @returns
+   */
   deleteArticle(id: number) {
     return this.http.delete(url + 'articles/' + id).subscribe((response) => {
       console.log(response);
     });
   }
 
+  /**
+   * Deletes category
+   * @param id
+   * @returns
+   */
   deleteCategory(id: number) {
     return this.http.delete(url + 'categories/' + id).subscribe((response) => {
       console.log(response);
     });
   }
 
+  /**
+   * Deletes customer
+   * @param id
+   * @returns
+   */
   deleteCustomer(id: number) {
     return this.http.delete(url + 'customers/' + id).subscribe((response) => {
       console.log(response);
     });
   }
 
+  /**
+   * Saves newest article
+   * @returns
+   */
   saveNewestArticle() {
     const articles = this.articleService.getArticles();
     const newArticle = articles[articles.length - 1];
@@ -109,6 +159,10 @@ export class DataStorageService {
       });
   }
 
+  /**
+   * Saves newest category
+   * @returns
+   */
   saveNewestCategory() {
     const categories = this.articleService.getCategories();
     const newCategory = categories[categories.length - 1];
@@ -119,6 +173,10 @@ export class DataStorageService {
       });
   }
 
+  /**
+   * Saves newest customer
+   * @returns
+   */
   saveNewestCustomer() {
     const customers = this.customerService.getCustomers();
     const newCustomer = customers[customers.length - 1];
@@ -129,12 +187,24 @@ export class DataStorageService {
       });
   }
 
+  /**
+   * Uploads file to firebase storage
+   * @param file
+   * @param id
+   * @returns file
+   */
   uploadFile(file: File, id: number): Observable<string> {
     const path = `images/${id}`;
     const task = this.afStorage.upload(path, file);
     return this.getDownloadUrl(task, path);
   }
 
+  /**
+   * Gets download url for uploadFile method
+   * @param uploadTask
+   * @param path
+   * @returns download url
+   */
   getDownloadUrl(
     uploadTask: AngularFireUploadTask,
     path: string
@@ -144,11 +214,20 @@ export class DataStorageService {
     );
   }
 
+  /**
+   * Gets url of single image
+   * @param id
+   * @returns
+   */
   getUrl(id: number) {
     const ref = this.afStorage.ref('images/' + id);
     return ref.getDownloadURL();
   }
 
+  /**
+   * Deletes file
+   * @param id
+   */
   deleteFile(id) {
     const ref = this.afStorage.ref('images/' + id);
     ref.delete();

@@ -8,6 +8,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Article } from '../../../articles/article.model';
 import { DataStorageService } from 'src/app/_services/data-storage.service';
 
+/**
+ * Edit Article Component: to edit an article via modal
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-edit-article',
   templateUrl: './edit-article.component.html',
@@ -32,6 +36,9 @@ export class EditArticleComponent implements OnInit {
     public activeModal: NgbActiveModal
   ) {}
 
+  /**
+   * on init: subscribe to categories list and articles list, build form, get image of article
+   */
   ngOnInit(): void {
     this.subscription = this.articleService.categoriesChanged.subscribe(
       (categories: ArticleCategory[]) => {
@@ -54,6 +61,9 @@ export class EditArticleComponent implements OnInit {
       .subscribe((value) => (this.imgUrl = value));
   }
 
+  /**
+   * deletes an article if button is clicked
+   */
   onDeleteArticle() {
     const id = this.editForm.get('id').value;
     this.articleService.removeArticle(this.editForm.getRawValue());
@@ -62,13 +72,20 @@ export class EditArticleComponent implements OnInit {
     this.activeModal.close();
   }
 
+  /**
+   * saves changes if save button is clicked
+   */
   onUpdateArticle() {
     this.articleService.updateArticle(this.editForm.getRawValue());
     this.dataService.updateArticle(this.editForm.getRawValue());
     this.activeModal.close();
   }
 
-  // Called when file is changed
+  /**
+   * Determines wether an article image was changed if the file dialog was used and saves it.
+   * @param event
+   * @returns
+   */
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     if (!this.selectedFile) {
@@ -89,6 +106,9 @@ export class EditArticleComponent implements OnInit {
       .subscribe((value) => (this.imgUrl = value));
   }
 
+  /**
+   * closes active modal
+   */
   onCloseModals() {
     this.activeModal.dismiss();
   }

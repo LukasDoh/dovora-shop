@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataStorageService } from 'src/app/_services/data-storage.service';
 
+/**
+ * Data View Component: Parent Component for masterdata management.
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-data-view',
   templateUrl: './data-view.component.html',

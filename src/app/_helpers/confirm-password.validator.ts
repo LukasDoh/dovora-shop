@@ -1,5 +1,12 @@
 import { FormGroup } from '@angular/forms';
 
+/**
+ * Validator to match two password fields in form
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ * @param controlName
+ * @param matchingControlName
+ * @returns
+ */
 export function ConfirmPasswordValidator(
   controlName: string,
   matchingControlName: string

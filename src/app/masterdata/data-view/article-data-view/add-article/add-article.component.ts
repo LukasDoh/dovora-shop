@@ -1,14 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { faSave, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { Article } from '../../../articles/article.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ArticleService } from '../../../../_services/article.service';
 import { DataStorageService } from '../../../../_services/data-storage.service';
 import { ArticleCategory } from '../../../articles/article-category.model';
-import { Subscription, Observable } from 'rxjs';
-import { NgbModal, NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
+import {
+  NgbActiveModal
+} from '@ng-bootstrap/ng-bootstrap';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
+/**
+ * Add Article Component: to add an article via modal
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-add-article',
   templateUrl: './add-article.component.html',
@@ -27,13 +33,15 @@ export class AddArticleComponent implements OnInit {
   validFileTypes: string[] = ['jpg', 'gif', 'png'];
 
   constructor(
-    private modalService: NgbModal,
     private activeModal: NgbActiveModal,
     private articleService: ArticleService,
     private dataStorageService: DataStorageService,
     private formBuilder: FormBuilder
   ) {}
 
+  /**
+   * on init: subscribes to categories list, gets categories, gets id for new articles, builds form
+   */
   ngOnInit(): void {
     this.subscription = this.articleService.categoriesChanged.subscribe(
       (categories: ArticleCategory[]) => {
@@ -52,10 +60,14 @@ export class AddArticleComponent implements OnInit {
       category: ['', Validators.required],
       image: [''],
     });
-    this.addForm.setErrors({noImage: true})
+    this.addForm.setErrors({ noImage: true });
   }
 
-  // Called when file is changed
+  /**
+   * Determines whether image file was changed and saves the image.
+   * @param event
+   * @returns
+   */
   public onUpload(event) {
     this.selectedFile = event.target.files[0];
     if (!this.selectedFile) {
@@ -78,6 +90,10 @@ export class AddArticleComponent implements OnInit {
     this.addForm.setErrors(null);
   }
 
+  /**
+   * saves article if save button was clicked
+   * @param addMultiple
+   */
   onSaveArticle(addMultiple: Boolean) {
     const value = this.addForm.getRawValue();
     const newArticle = new Article(
@@ -96,6 +112,9 @@ export class AddArticleComponent implements OnInit {
     this.addForm.controls.id.setValue(this.nextArticleId);
   }
 
+  /**
+   * closes active modal
+   */
   onCloseModal() {
     this.activeModal.close();
   }

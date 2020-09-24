@@ -6,6 +6,10 @@ import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { auth } from 'firebase';
 
+/**
+ * Login Component: Delivers form and functions for login modal
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,6 +29,9 @@ export class LoginComponent implements OnInit {
     private tokenStorage: TokenStorageService
   ) {}
 
+  /**
+   * on init: checks if logged in and gets roles, builds login form.
+   */
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
@@ -36,6 +43,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * If Login Form is submitted: user is logged in via Auth Service
+   */
   onSubmit(): void {
     this.auth.login(this.loginForm.value).subscribe(
       data => {
@@ -55,10 +65,16 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  /**
+   * Reloads page
+   */
   reloadPage(): void {
     window.location.reload();
   }
 
+  /**
+   * closes modal
+   */
   onClose() {
     this.activeModal.close();
   }

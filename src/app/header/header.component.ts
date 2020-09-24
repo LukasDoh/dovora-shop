@@ -15,6 +15,9 @@ import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartService } from '../_services/shopping-cart.service';
+/**
+ * Header Component: provides header navbar.
+ */
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -42,6 +45,9 @@ export class HeaderComponent implements OnInit {
     private cartService: ShoppingCartService
   ) {}
 
+  /**
+   * on init: set user, subscribe to items in cart, gets all items in cart
+   */
   ngOnInit(): void {
     this.currentUser = this.tokenService.getUser();
     this.subscription = this.cartService.itemsChanged.subscribe(
@@ -52,20 +58,36 @@ export class HeaderComponent implements OnInit {
     this.cartItems = this.cartService.getItems();
   }
 
+  /**
+   * Opens modal
+   * @param content
+   */
   open(content) {
     this.modalService.open(content);
   }
 
+  /**
+   * opens Login Modal if login button is clicked
+   */
   onLogin() {
     this.modalService.open(LoginComponent);
   }
 
+  /**
+   * logs user out if logout is clicked
+   */
   onLogout() {
     this.tokenService.signOut();
     this.router.navigateByUrl('/');
     window.location.reload();
   }
 
+  /**
+   * Determines whether current user has one or more roles
+   * @param role
+   * @param [otherrole]
+   * @returns
+   */
   hasRole(role: string, otherrole = null) {
     if (this.currentUser) {
       if (this.currentUser.roles.indexOf(role) > -1) {

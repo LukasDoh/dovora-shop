@@ -9,6 +9,10 @@ import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
+/**
+ * @author Lukas Dohmeier <lukas.dohmeier@edu.fhdw.de>
+ * Routing module: Manages all routes
+ */
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   {
